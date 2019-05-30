@@ -15,6 +15,7 @@ export const store = new Vuex.Store({
             .then(res => res.json().then(json => state.supportedDevices = json ))
         },
         fetchBuildsByCodename(state, props){
+            state.builds = []
             fetch(`https://krakenapi.andersonmendess.now.sh/devices/${props.codename}/builds`)
             .then(res => res.json().then(json => state.builds = json.builds ))
         },
