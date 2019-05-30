@@ -16,7 +16,6 @@ export default {
     CardBuilds
   },
   created() {
-    this.$store.commit("setDevice", this.$route.params);
     this.$store.commit("fetchBuildsByCodename", this.$route.params);
   },
   watch: {

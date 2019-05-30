@@ -1,5 +1,5 @@
 <template>
-  <div v-if="device">
+  <div>
     <h5 class="center upper-bold accent">{{device.brand}} {{device.name}} ({{device.codename}})</h5>
     <div class="row limiter">
       <div class="col s12 m12">
@@ -46,6 +46,7 @@ export default {
   name: "CardHeader",
   computed: {
     device() {
+      this.$store.commit("setDevice", this.$route.params);
       return this.$store.state.device;
     }
   }

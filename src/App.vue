@@ -21,6 +21,9 @@ import Device from './views/Device.vue'
 
 export default {
   name: 'app',
+  created(){
+    this.$store.commit("fetchSupportedDevices");
+  },
   components: {
     Navbar,
     Sidebar,

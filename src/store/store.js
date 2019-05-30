@@ -19,7 +19,7 @@ export const store = new Vuex.Store({
             fetch(`https://krakenapi.andersonmendess.now.sh/devices/${props.codename}/builds`)
             .then(res => res.json().then(json => state.builds = json.builds ))
         },
-        setDevice(state, props){            
+        setDevice(state, props){
             state.supportedDevices
             .map(brand => brand.devices
                 .filter(devices => devices.codename == props.codename)

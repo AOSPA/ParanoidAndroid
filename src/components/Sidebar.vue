@@ -39,9 +39,6 @@
 <script>
 export default {
   name: "Sidebar",
-  created() {
-    this.$store.commit("fetchSupportedDevices");
-  },
   mounted() {
     // init collapsible
     let elems = document.querySelector(".collapsible");
