@@ -1,10 +1,10 @@
 <template>
   <ul id="slide-out" class="sidenav">
     <div>
-      <a class="bar-logo center" href="/">
+      <router-link class="bar-logo center" :to="{name: 'home'}">
         <img src="https://avatars0.githubusercontent.com/u/49829986?s=100&v=4">
         <h4 class="accent">KrakenProject</h4>
-      </a>
+      </router-link>
 
       <div class="square searchbar">
         <div class="search-wrapper">
