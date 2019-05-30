@@ -11,6 +11,7 @@
 import 'materialize-css'
 import 'materialize-css/dist/css/materialize.css'
 
+import '../public/css/styles.css'
 
 import Navbar from './components/Navbar.vue'
 import Sidebar from './components/Sidebar.vue'
