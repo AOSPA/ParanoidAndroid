@@ -7,7 +7,6 @@
     <div class="home-desc">
       <div class="desc square accent">LineageOS based ROM</div>
     </div>
-
     <ProjectLink/>
     <Credits/>
   </div>

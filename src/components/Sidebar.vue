@@ -13,21 +13,24 @@
         </div>
       </div>
       <ul class="collapsible collapsible-accordion">
-          <li v-for="brand in brands" :key="brand.name">
-            <div class="collapsible-header">
-              <i class="material-icons">phone_android</i>
-              <span style="width: 90%">{{brand.name}}</span>
-              <i class="material-icons">arrow_drop_down</i>
-            </div>
+        <li v-for="brand in brands" :key="brand.name">
+          <div class="collapsible-header">
+            <i class="material-icons">phone_android</i>
+            <span style="width: 90%">{{brand.name}}</span>
+            <i class="material-icons">arrow_drop_down</i>
+          </div>
 
-            <div class="collapsible-body">
-              <ul>
-                  <li v-for="device in brand.devices" :key="device.codename">
-                    <router-link :to="{ name: 'device', params: { codename: device.codename }}" class="pointer devilist">{{device.name}} ({{device.codename}})</router-link>
-                  </li>
-              </ul>
-            </div>
-          </li>
+          <div class="collapsible-body">
+            <ul>
+              <li v-for="device in brand.devices" :key="device.codename">
+                <router-link
+                  :to="{ name: 'device', params: { codename: device.codename }}"
+                  class="pointer devilist"
+                >{{device.name}} ({{device.codename}})</router-link>
+              </li>
+            </ul>
+          </div>
+        </li>
       </ul>
     </div>
   </ul>
@@ -36,22 +39,17 @@
 <script>
 export default {
   name: "Sidebar",
+  created() {
+    this.$store.commit("fetchSupportedDevices");
+  },
   mounted() {
-    this.loadDevices();
     // init collapsible
     let elems = document.querySelector(".collapsible");
     M.Collapsible.init(elems);
   },
-  data() {
-    return {
-      brands: []
-    };
-  },
-  methods: {
-    loadDevices: function() {
-      fetch("https://krakenapi.andersonmendess.now.sh/devices")
-        .then(res => res.json().then(json => (this.brands = json)))
-        .catch(e => console.log(e));
+  computed: {
+    brands() {
+      return this.$store.state.supportedDevices;
     }
   }
 };
