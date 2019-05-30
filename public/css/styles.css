@@ -1,0 +1,409 @@
+:root {
+  --background: #212121;
+  --card: #1C1C1C;
+  --accent: #A97CF0;
+  --text: #f7f7f7 ;
+}
+
+h1, h2, h3, h4, h5, h6, span, th, pre {
+  color: var(--text);
+}
+
+*, input {
+  font-family: "Product Sans"
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.line {
+  border-top: 1px solid var(--accent);
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: var(--background);
+  }
+  
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+  }
+
+  .limiter {
+    max-width: 800px;
+  }
+  
+  header, main, footer {
+    padding-left: 0px;
+  }
+  
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--background); 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--accent); 
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.sidenav li>a>i, .sidenav li>a>i.material-icons {
+    margin:0 0 0 0;
+}
+
+.card-action a {
+  color: var(--accent) !important;
+}
+
+.card {
+  margin: 0px;
+  background-color: var(--background) !important;
+}
+
+#slide-out, a {
+  background-color: var(--card) !important;
+  color: var(--text) !important;
+}
+
+.cardColor {
+  background-color: var(--card) !important;
+}
+
+a{
+  cursor: pointer;
+}
+
+pre{
+  word-break:break-all;
+  overflow:hidden;
+  white-space:pre-line;
+  font-size: 13px;
+}
+
+.sidenav-trigger,.sidenav-trigger:hover  {
+  background-color: var(--accent) !important;
+}
+
+a:hover{
+  color: var(--accent) !important;
+}
+
+span:hover{
+  color: var(--accent) !important;
+}
+
+table a {
+  color: var(--accent) !important;
+}
+
+.svg, svg path {
+  fill: var(--accent);
+}
+
+#settings {
+  position: fixed;
+  right: 0;
+  top:10px;
+  padding: 3px;
+}
+
+.nav-wrapper{
+  background-color: var(--accent);
+}
+
+.menu {
+  height: 280px;
+  width: 220px;
+  background-color: var(--card);
+  position: fixed;
+  right: 0px;
+  top: 45px;
+  margin: 15px;
+  margin-bottom: 30px;
+  padding: 4px;
+  text-align: center;
+  z-index: 10;
+  border-radius: 2px;
+}
+
+.menu ul li{
+  float: left;
+  margin: 2.5px;
+}
+
+.colorview {
+  width: 30px;
+  height: 30px;
+  border-radius: 2px;
+}
+
+i {
+  color: var(--accent) !important;
+  margin-right: 7px !important;
+}
+
+.bar-logo {
+  margin-top: 20px;
+}
+
+.bar-logo:hover {
+  background-color: transparent !important;
+}
+.upper-bold {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.home-desc{
+  margin-top: 30px;
+}
+.home-desc .card{
+  width: 100%;
+  min-height: 80px;
+  padding:15px;
+  font-size: 20px;
+}
+
+.btn-flat {
+  color: var(--accent) !important;
+  background-color: transparent !important;
+}
+
+@media only screen and (min-width: 1000px) {
+    #slide-out {
+        transform: translateX(0%);
+    }
+    .center {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    body{
+      padding-left: 300px;
+    }
+    .nav-wrapper {
+      display: none;
+    }
+    nav {
+      background-color: var(--accent);
+    }
+    .navbar-fixed {
+      display: none;
+    }
+    .bar-settings {
+      display: block;
+    }
+    .menu {
+      top: 30px;
+    }
+}
+
+nav .sidenav-trigger i {
+  color: white !important;
+}
+
+.search-link {
+  font-family: "Product Sans";
+  background-color: transparent !important;
+  color: var(--accent) !important;
+  padding: 10px !important;
+  margin-left: 5px !important;
+  display: block !important;
+  text-align: left !important;
+  padding-left: 5px !important;
+
+}
+input {
+  padding: 0px !important;
+  margin: 0px !important;
+  padding-left: 5px !important;
+  border-bottom: none !important;
+  color: var(--accent) !important;
+}
+
+input::placeholder {
+  color: var(--accent) !important;
+}
+
+input:focus {
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+.is-s {
+  font-size: 24px !important;
+  margin-left: 10px !important;
+  margin-right: 0px !important;
+  margin-bottom: 4px !important;
+  vertical-align: middle;
+}
+
+.square {
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+}
+.desc {
+  font-size: 19px;
+  padding: 10px;
+  margin: 5px;
+}
+
+.builds {
+  padding: 15px;
+}
+
+tr th {
+  font-weight: 100
+}
+
+.searchbar {
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+  margin-bottom: 15px;
+  padding: 1px;
+}
+
+.builds h6 {
+  line-height: 10px;
+}
+
+.deviceprop {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 7px;
+}
+
+.deviceprop h6 {
+  font-weight: 100;
+}
+
+.collapsible-body {
+  background-color: var(--card) !important;
+  transition: none;
+}
+
+.home-bottom-info {
+  margin-top: 13%;
+  max-width: 800px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.home-bottom-info div {
+  margin: auto;
+}
+
+.home-bottom-info-content {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.home-bottom-info-content a {
+  background-color: transparent !important;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+
+.credits {
+  font-size: 13px;
+  font-family: "Product Sans";
+  color: var(--text);
+  margin-top: 2px;
+}
+.credits a {
+  background-color: transparent !important;
+  color: var(--accent) !important;
+}
+
+a, span {
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.collapsible li div {
+  background-color: var(--card);
+  color: var(--text);
+}
+
+.collapsible-header, .collapsible, .collapsible-body {
+  border: none;
+}
+
+.collapsible-body {
+  border: 1px solid var(--background);
+  border-radius: 2px;
+  margin: 0px;
+  padding: 0px;
+  text-align: start;
+  padding-top: 8px;
+}
+
+.collapsible-body .deviceprop, .collapsible-body p {
+  margin: 1px;
+  margin-top: 3px;
+  display: block;
+}
+
+.collapsible-builds li {
+  margin-top: 5px;
+}
+
+.buildChangelog pre {
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: var(--background);
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.buildChangelog {
+  padding: 5px;
+  padding-top: 0px;
+}
+
+.label {
+  padding: 0px;
+  color: var(--accent);
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+.buildinfo {
+ padding: 10px;
+}
+
+.buildbuttons {
+  padding-bottom: 10px;
+  padding-left: 10px;
+}
+
+.xda-buttons {
+  padding-top: 5px;
+}
