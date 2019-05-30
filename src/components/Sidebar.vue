@@ -23,7 +23,7 @@
             <div class="collapsible-body">
               <ul>
                   <li v-for="device in brand.devices" :key="device.codename">
-                    <a class="pointer devilist">{{device.name}} ({{device.codename}})</a>
+                    <router-link :to="{ name: 'device', params: { codename: device.codename }}" class="pointer devilist">{{device.name}} ({{device.codename}})</router-link>
                   </li>
               </ul>
             </div>
