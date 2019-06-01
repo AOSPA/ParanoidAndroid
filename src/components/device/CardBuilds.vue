@@ -48,12 +48,18 @@
           </div>
         </li>
       </ul>
+      <Loading v-if="!deviceBuilds[0]"/>
     </div>
   </div>
 </template>
 <script>
+import Loading from "../common/Loading.vue";
+
 export default {
   name: "CardBuilds",
+  components: {
+    Loading
+  },
   mounted() {
     // init collapsible
     let elems = document.querySelector(".collapsible-builds");

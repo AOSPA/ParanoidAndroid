@@ -5,13 +5,13 @@ Vue.use(Vuex)
 
 export const store = new Vuex.Store({
     state: {
-        supportedDevices: [],
+        devices: [],
         builds: [],
         device: {}
     },
     mutations: {
         setDevices(state, devices){
-            state.supportedDevices = devices
+            state.devices = devices
         },
         setDevice(state, device){
             state.device = device
@@ -33,7 +33,7 @@ export const store = new Vuex.Store({
             .then(json => commit('setBuilds', json.builds) ))
         },
         filterDevice({commit, state}, props){
-            state.supportedDevices
+            state.devices
             .map(brand => brand.devices
                 .filter(devices => devices.codename == props.codename)
                 .map(device => commit('setDevice', device))

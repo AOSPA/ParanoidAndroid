@@ -12,6 +12,7 @@
           <input style="width: 80%" type="text" placeholder="Type your device... ">
         </div>
       </div>
+      <Loading v-if="!brands[0]"/>
       <ul class="collapsible collapsible-accordion">
         <li v-for="brand in brands" :key="brand.name">
           <div class="collapsible-header">
@@ -22,7 +23,7 @@
 
           <div class="collapsible-body">
             <ul>
-              <li v-for="device in brand.devices" :key="device.codename">
+              <li @click="hidebar" v-for="device in brand.devices" :key="device.codename">
                 <router-link
                   :to="{ name: 'device', params: { codename: device.codename }}"
                   class="pointer devilist"
@@ -37,8 +38,13 @@
 </template>
 
 <script>
+import Loading from "../components/common/Loading.vue";
+
 export default {
   name: "Sidebar",
+  components: {
+    Loading
+  },
   mounted() {
     // init collapsible
     let elems = document.querySelector(".collapsible");
@@ -46,7 +52,14 @@ export default {
   },
   computed: {
     brands() {
-      return this.$store.state.supportedDevices;
+      return this.$store.state.devices;
+    }
+  },
+  methods: {
+    hidebar: function() {
+      // hide sidenav when click on device
+      let sidenav = document.querySelectorAll('.sidenav');
+      M.Sidenav.init(sidenav);
     }
   }
 };

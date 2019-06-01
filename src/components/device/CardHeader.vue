@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="device.name">
     <h5 class="center upper-bold accent">{{device.brand}} {{device.name}} ({{device.codename}})</h5>
     <div class="row limiter">
       <div class="col s12 m12">
