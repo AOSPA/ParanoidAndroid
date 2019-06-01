@@ -46,7 +46,7 @@ export default {
   name: "CardHeader",
   computed: {
     device() {
-      this.$store.commit("setDevice", this.$route.params);
+      this.$store.dispatch("filterDevice", this.$route.params);
       return this.$store.state.device;
     }
   }

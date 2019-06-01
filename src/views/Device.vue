@@ -16,13 +16,13 @@ export default {
     CardBuilds
   },
   created() {
-    this.$store.commit("fetchBuildsByCodename", this.$route.params);
+    this.$store.dispatch("fetchBuilds", this.$route.params);
   },
   watch: {
     "$route.params": {
       handler(params) {
-        this.$store.commit("setDevice", params);
-        this.$store.commit('fetchBuildsByCodename', params)
+        this.$store.dispatch("filterDevice", params);
+        this.$store.dispatch('fetchBuilds', params)
       }
     }
   }

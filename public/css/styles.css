@@ -271,6 +271,10 @@ input:focus {
   padding: 15px;
 }
 
+.builds h6 {
+  line-height: 10px;
+}
+
 tr th {
   font-weight: 100
 }
@@ -280,10 +284,6 @@ tr th {
   margin-right: 10px !important;
   margin-bottom: 15px;
   padding: 1px;
-}
-
-.builds h6 {
-  line-height: 10px;
 }
 
 .deviceprop {
@@ -332,6 +332,7 @@ tr th {
   color: var(--text);
   margin-top: 2px;
 }
+
 .credits a {
   background-color: transparent !important;
   color: var(--accent) !important;
@@ -370,7 +371,7 @@ a, span {
 }
 
 .collapsible-builds li {
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .buildChangelog pre {
