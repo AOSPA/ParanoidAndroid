@@ -223,13 +223,11 @@ nav .sidenav-trigger i {
 
 .search-link {
   font-family: "Product Sans";
-  background-color: transparent !important;
-  color: var(--accent) !important;
-  padding: 10px !important;
-  margin-left: 5px !important;
+  background-color: var(--background) !important;
+  padding: 13px !important;
+  padding-left: 15px !important;
   display: block !important;
   text-align: left !important;
-  padding-left: 5px !important;
 
 }
 input {
@@ -237,7 +235,7 @@ input {
   margin: 0px !important;
   padding-left: 5px !important;
   border-bottom: none !important;
-  color: var(--accent) !important;
+  color: var(--text) !important;
 }
 
 input::placeholder {

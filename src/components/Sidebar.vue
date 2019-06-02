@@ -6,12 +6,7 @@
         <h4 class="accent">{{name}}</h4>
       </router-link>
 
-      <div class="square searchbar">
-        <div class="search-wrapper">
-          <i class="material-icons is-s">search</i>
-          <input style="width: 80%" type="text" placeholder="Type your device... ">
-        </div>
-      </div>
+      <Search/>
       <Loading v-if="!brands[0]"/>
       <ul class="collapsible collapsible-accordion">
         <li v-for="brand in brands" :key="brand.name">
@@ -40,13 +35,16 @@
 <script>
 import Loading from "../components/common/Loading.vue";
 import Logo from "../components/common/Logo.vue";
+import Search from "../components/common/Search.vue";
+
 import configs from "../configs"
 
 export default {
   name: "Sidebar",
   components: {
     Loading,
-    Logo
+    Logo,
+    Search
   },
   mounted() {
     // init collapsible
