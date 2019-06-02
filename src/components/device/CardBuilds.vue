@@ -1,9 +1,9 @@
 <template>
   <div class="row center">
-    <div class="col s12 m12 center builds">
+    <div class="col s12 m12">
       <ul class="collapsible collapsible-builds">
-        <li v-for="build in deviceBuilds" :key="build.id">
-          <div class="collapsible-header white-text product-sans cardColor">
+        <li v-for="build in deviceBuilds" :key="build.id" class='buildcoll'>
+          <div class="collapsible-header white-text cardColor">
             <i class="material-icons">system_update</i>
             <span style="width: 100%">{{ build.filename }}</span>
             <i class="material-icons">arrow_drop_down</i>
