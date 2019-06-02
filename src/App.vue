@@ -2,6 +2,7 @@
   <div id="app">
     <Navbar/>
     <Sidebar/>
+    <ThemeEngine/>
     <router-view></router-view>
   </div>
 </template>
@@ -15,6 +16,7 @@ import '../public/css/styles.css'
 
 import Navbar from './components/Navbar.vue'
 import Sidebar from './components/Sidebar.vue'
+import ThemeEngine from './components/common/ThemeEngine.vue'
 
 import Home from './views/Home.vue'
 import Device from './views/Device.vue'
@@ -28,7 +30,8 @@ export default {
     Navbar,
     Sidebar,
     Home,
-    Device
+    Device,
+    ThemeEngine
   }
 }
 </script>

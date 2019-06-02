@@ -223,7 +223,6 @@ nav .sidenav-trigger i {
 
 .search-link {
   font-family: "Product Sans";
-  background-color: var(--background) !important;
   padding: 13px !important;
   padding-left: 15px !important;
   display: block !important;
