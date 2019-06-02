@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import configs from '../configs'
 
 Vue.use(Vuex)
 
@@ -22,13 +23,13 @@ export const store = new Vuex.Store({
     },
     actions: {
         fetchDevices({commit}) {
-            fetch("https://krakenapi.andersonmendess.now.sh/devices")
+            fetch(configs.API_BASE)
             .then(res => res.json()
             .then(json => commit('setDevices', json)))
         },
         fetchBuilds({commit}, props){
             commit('setBuilds', [])
-            fetch(`https://krakenapi.andersonmendess.now.sh/devices/${props.codename}/builds`)
+            fetch(configs.API_BASE + `/${props.codename}/builds`)
             .then(res => res.json()
             .then(json => commit('setBuilds', json.builds) ))
         },

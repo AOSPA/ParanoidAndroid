@@ -2,8 +2,8 @@
   <ul id="slide-out" class="sidenav">
     <div>
       <router-link class="bar-logo center" :to="{name: 'home'}">
-        <img src="https://avatars0.githubusercontent.com/u/49829986?s=100&v=4">
-        <h4 class="accent">KrakenProject</h4>
+        <Logo size="100"/>
+        <h4 class="accent">{{name}}</h4>
       </router-link>
 
       <div class="square searchbar">
@@ -39,11 +39,14 @@
 
 <script>
 import Loading from "../components/common/Loading.vue";
+import Logo from "../components/common/Logo.vue";
+import configs from "../configs"
 
 export default {
   name: "Sidebar",
   components: {
-    Loading
+    Loading,
+    Logo
   },
   mounted() {
     // init collapsible
@@ -51,6 +54,9 @@ export default {
     M.Collapsible.init(elems);
   },
   computed: {
+    name(){
+      return configs.APP_NAME
+    },
     brands() {
       return this.$store.state.devices;
     }
