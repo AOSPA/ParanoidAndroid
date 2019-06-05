@@ -19,10 +19,10 @@ export default {
     this.$store.dispatch("fetchBuilds", this.$route.params);
   },
   watch: {
-    "$route.params": {
+    "$route.params.codename": {
       handler(params) {
-        this.$store.dispatch("filterDevice", params);
-        this.$store.dispatch('fetchBuilds', params)
+        this.$store.dispatch("filterDevice", { codename: params });
+        this.$store.dispatch("fetchBuilds", { codename: params });
       }
     }
   }

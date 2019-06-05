@@ -10,7 +10,8 @@ export const store = new Vuex.Store({
         builds: [],
         device: {},
         deviceLoader: true,
-        buildLoader: true
+        buildLoader: true,
+        expandedBuild: null
     },
     mutations: {
         setDevices(state, devices) {
@@ -27,6 +28,9 @@ export const store = new Vuex.Store({
         },
         updateBuildLoader(state, status) {
             state.buildLoader = status
+        },
+        setExpandedBuild(state, index){
+            state.expandedBuild = index;
         }
     },
     actions: {
@@ -45,17 +49,13 @@ export const store = new Vuex.Store({
                 .then(res => res.json()
                     .then(json => {
 
-                        if (json.builds.length === 0) {
+                        if (json.builds.length === 0 && this.state.device.codename) {
                             M.toast({ html: `No builds found. Check again later.` })
                         } else {
                             commit('setBuilds', json.builds)
                         }
 
-                    }))
-                .catch(e => {
-                    M.toast({ html: `an error occurred. try again later.` })
-                })
-                .finally(() => commit('updateBuildLoader', false))
+                    })).finally(() => commit('updateBuildLoader', false))
 
 
         },
@@ -66,6 +66,10 @@ export const store = new Vuex.Store({
                     .map(device => commit('setDevice', device))
                 )
 
+        },
+        getIndexOfExpandedBuild({commit, state}, filename){
+            let index = state.builds.map((e,i) => e.filename == filename ? i : null).filter((e) => e != null)
+            commit('setExpandedBuild', index)
         }
 
     },

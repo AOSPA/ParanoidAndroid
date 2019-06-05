@@ -2,7 +2,12 @@
   <div class="row center">
     <div class="col s12 m12">
       <ul class="collapsible collapsible-builds">
-        <li v-for="build in deviceBuilds" :key="build.id" class='buildcoll'>
+        <li
+          v-for="build in deviceBuilds"
+          :key="build.id"
+          @click="setBuild(build.filename)"
+          class="buildcoll"
+        >
           <div class="collapsible-header white-text cardColor">
             <i class="material-icons">system_update</i>
             <span style="width: 100%">{{ build.filename }}</span>
@@ -60,10 +65,34 @@ export default {
   components: {
     Loading
   },
-  mounted() {
-    // init collapsible
-    let elems = document.querySelector(".collapsible-builds");
-    M.Collapsible.init(elems);
+  updated() {
+    if (this.$route.params.filename) {
+      this.$store.dispatch(
+        "getIndexOfExpandedBuild",
+        this.$route.params.filename
+      );
+    }
+    this.openBuild(this.$store.state.expandedBuild);
+    this.$store.dispatch("getIndexOfExpandedBuild", "");
+  },
+  methods: {
+    setBuild(obj) {
+      let elems = document.querySelector(".collapsible-builds");
+      let instances = M.Collapsible.init(elems);
+
+      instances.options.onOpenEnd = () =>
+        this.$router.push({ name: "filename", params: { filename: obj } });
+
+      instances.options.onCloseEnd = () =>
+        this.$router.replace({ name: "filename", params: { filename: null } });
+    },
+    openBuild(index) {
+      if (!isNaN(index)) {
+        let elems = document.querySelector(".collapsible-builds");
+        let instances = M.Collapsible.init(elems);
+        instances.open(index);
+      }
+    }
   },
   computed: {
     deviceBuilds() {
