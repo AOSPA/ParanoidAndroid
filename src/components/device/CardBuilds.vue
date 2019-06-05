@@ -71,6 +71,7 @@ export default {
         "getIndexOfExpandedBuild",
         this.$route.params.filename
       );
+    document.title = this.$route.params.filename || 'Download Kraken for '+this.$route.params.codename
     }
     this.openBuild(this.$store.state.expandedBuild);
     this.$store.dispatch("getIndexOfExpandedBuild", "");
