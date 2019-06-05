@@ -48,7 +48,7 @@
           </div>
         </li>
       </ul>
-      <Loading v-if="!deviceBuilds[0]"/>
+      <Loading v-if="$store.state.buildLoader"/>
     </div>
   </div>
 </template>

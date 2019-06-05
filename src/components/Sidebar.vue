@@ -7,7 +7,7 @@
       </router-link>
 
       <Search/>
-      <Loading v-if="!brands[0]"/>
+      <Loading v-if="$store.state.deviceLoader"/>
       <ul class="collapsible collapsible-accordion">
         <li v-for="brand in brands" :key="brand.name">
           <div class="collapsible-header">
