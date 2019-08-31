@@ -19,6 +19,13 @@ export default {
     this.$store.dispatch("fetchBuilds", this.$route.params);
     document.title = 'Download Kraken for ' + this.$route.params.codename
   },
+  mounted() {
+    if(!this.$store.state.device.codename){
+      M.toast({ html: `The device '${this.$route.params.codename}' is not supported.` })
+      this.$router.push({ name: 'home'});
+
+    }
+  },
   watch: {
     "$route.params.codename": {
       handler(params) {

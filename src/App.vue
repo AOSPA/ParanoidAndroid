@@ -23,7 +23,7 @@ import Device from './views/Device.vue'
 
 export default {
   name: 'app',
-  created(){
+  created() {
     this.$store.dispatch("fetchDevices");
   },
   components: {
