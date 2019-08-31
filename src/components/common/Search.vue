@@ -19,51 +19,49 @@
 </template>
 <script>
 export default {
-  name: "Search",
+  name: 'Search',
   data() {
     return {
-      search: ""
+      search: '',
     };
   },
   mounted() {
-    document.addEventListener("keypress", event => {
+    document.addEventListener('keypress', (event) => {
       if (event.keyCode == 13) {
-        if (document.querySelector(".search-link") != null) {
+        if (document.querySelector('.search-link') != null) {
           this.resetSearch();
           this.$router.push({
-            name: "device",
+            name: 'device',
             params: {
-              codename: document.querySelector(".search-link").attributes[
-                "data-device"
-              ].value
-            }
+              codename: document.querySelector('.search-link').attributes[
+                'data-device'
+              ].value,
+            },
           });
         }
       }
     });
   },
   methods: {
-    resetSearch: function() {
-        document.querySelectorAll('.wrapper')[0].style.display = 'none'
-        document.querySelectorAll('input')[0].blur()
-        this.search = "";
-    }
+    resetSearch() {
+      document.querySelectorAll('.wrapper')[0].style.display = 'none';
+      document.querySelectorAll('input')[0].blur();
+      this.search = '';
+    },
   },
   computed: {
     filteredList() {
-      return this.$store.state.devices.flatMap(brands =>
-        brands.devices.filter(d => {
-          let resByCodename = d.codename
-            .toLowerCase()
-            .includes(this.search.toLowerCase());
-          let resByName = d.name
-            .toLowerCase()
-            .includes(this.search.toLowerCase());
+      return this.$store.state.devices.flatMap(brands => brands.devices.filter((d) => {
+        const resByCodename = d.codename
+          .toLowerCase()
+          .includes(this.search.toLowerCase());
+        const resByName = d.name
+          .toLowerCase()
+          .includes(this.search.toLowerCase());
 
-          return !!resByName ? resByName : resByCodename;
-        })
-      );
-    }
-  }
+        return resByName || resByCodename;
+      }));
+    },
+  },
 };
 </script>

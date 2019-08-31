@@ -18,8 +18,8 @@ export default {
   name: 'Navbar',
   mounted() {
     // init sidenav
-    let sidenav = document.querySelectorAll('.sidenav');
+    const sidenav = document.querySelectorAll('.sidenav');
     M.Sidenav.init(sidenav);
-  }
-}
+  },
+};
 </script>

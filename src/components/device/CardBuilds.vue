@@ -58,47 +58,45 @@
   </div>
 </template>
 <script>
-import Loading from "../common/Loading.vue";
+import Loading from '../common/Loading.vue';
 
 export default {
-  name: "CardBuilds",
+  name: 'CardBuilds',
   components: {
-    Loading
+    Loading,
   },
   updated() {
     if (this.$route.params.filename) {
       this.$store.dispatch(
-        "getIndexOfExpandedBuild",
-        this.$route.params.filename
+        'getIndexOfExpandedBuild',
+        this.$route.params.filename,
       );
-    document.title = this.$route.params.filename || 'Download Kraken for '+this.$route.params.codename
+      document.title = this.$route.params.filename || `Download Kraken for ${this.$route.params.codename}`;
     }
     this.openBuild(this.$store.state.expandedBuild);
-    this.$store.dispatch("getIndexOfExpandedBuild", "");
+    this.$store.dispatch('getIndexOfExpandedBuild', '');
   },
   methods: {
     setBuild(obj) {
-      let elems = document.querySelector(".collapsible-builds");
-      let instances = M.Collapsible.init(elems);
+      const elems = document.querySelector('.collapsible-builds');
+      const instances = M.Collapsible.init(elems);
 
-      instances.options.onOpenEnd = () =>
-        this.$router.push({ name: "filename", params: { filename: obj } });
+      instances.options.onOpenEnd = () => this.$router.push({ name: 'filename', params: { filename: obj } });
 
-      instances.options.onCloseEnd = () =>
-        this.$router.replace({ name: "filename", params: { filename: null } });
+      instances.options.onCloseEnd = () => this.$router.replace({ name: 'filename', params: { filename: null } });
     },
     openBuild(index) {
       if (!isNaN(index)) {
-        let elems = document.querySelector(".collapsible-builds");
-        let instances = M.Collapsible.init(elems);
+        const elems = document.querySelector('.collapsible-builds');
+        const instances = M.Collapsible.init(elems);
         instances.open(index);
       }
-    }
+    },
   },
   computed: {
     deviceBuilds() {
       return this.$store.state.builds;
-    }
-  }
+    },
+  },
 };
 </script>

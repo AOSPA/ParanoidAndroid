@@ -33,38 +33,38 @@
 </template>
 
 <script>
-import Loading from "../components/common/Loading.vue";
-import Logo from "../components/common/Logo.vue";
-import Search from "../components/common/Search.vue";
+import Loading from './common/Loading.vue';
+import Logo from './common/Logo.vue';
+import Search from './common/Search.vue';
 
-import configs from "../configs"
+import configs from '../configs';
 
 export default {
-  name: "Sidebar",
+  name: 'Sidebar',
   components: {
     Loading,
     Logo,
-    Search
+    Search,
   },
   mounted() {
     // init collapsible
-    let elems = document.querySelector(".collapsible");
+    const elems = document.querySelector('.collapsible');
     M.Collapsible.init(elems);
   },
   computed: {
-    name(){
-      return configs.APP_NAME
+    name() {
+      return configs.APP_NAME;
     },
     brands() {
       return this.$store.state.devices;
-    }
+    },
   },
   methods: {
-    hidebar: function() {
+    hidebar() {
       // hide sidenav when click on device
-      let sidenav = document.querySelectorAll('.sidenav');
+      const sidenav = document.querySelectorAll('.sidenav');
       M.Sidenav.init(sidenav);
-    }
-  }
+    },
+  },
 };
 </script>

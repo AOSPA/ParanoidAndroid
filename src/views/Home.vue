@@ -11,21 +11,21 @@
 </template>
 
 <script>
-import ProjectLink from "../components/home/ProjectLink.vue";
-import Credits from "../components/home/Credits.vue";
-import Logo from "../components/common/Logo.vue";
-import configs from "../configs";
+import ProjectLink from '../components/home/ProjectLink.vue';
+import Credits from '../components/home/Credits.vue';
+import Logo from '../components/common/Logo.vue';
+import configs from '../configs';
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     ProjectLink,
     Credits,
-    Logo
+    Logo,
   },
   created() {
-    document.title = 'Kraken Project'
-    document.head.querySelector("meta[name=description]").content = 'Kraken Project | Download Center'
+    document.title = 'Kraken Project';
+    document.head.querySelector('meta[name=description]').content = 'Kraken Project | Download Center';
   },
   computed: {
     subname() {
@@ -33,7 +33,7 @@ export default {
     },
     description() {
       return configs.APP_DESC;
-    }
-  }
+    },
+  },
 };
 </script>

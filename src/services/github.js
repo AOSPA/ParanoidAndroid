@@ -1,38 +1,36 @@
-import request from "../helpers/request";
-import { fetchDownloadsCount } from "./sourceforge";
-import { humanDate, humanSize } from "../helpers/utils";
+import request from '../helpers/request';
+import { fetchDownloadsCount } from './sourceforge';
+import { humanDate, humanSize } from '../helpers/utils';
 
-const baseURL = "https://raw.githubusercontent.com/KrakenProject";
+const baseURL = 'https://raw.githubusercontent.com/KrakenProject';
 
 const fetchDevices = async () => {
   try {
     const res = await request(`${baseURL}/official_devices/master/devices.json`);
 
-    let brands = [];
-    let devices = [];
+    const brands = [];
+    const devices = [];
 
     res.forEach(device => !brands.includes(device.brand) && brands.push(device.brand));
 
     brands.forEach(brand => devices.push({
       name: brand,
-      devices: res.filter(device => device.brand === brand)
-    })
-    )
+      devices: res.filter(device => device.brand === brand),
+    }));
 
     return devices;
-
   } catch (e) {
-    console.log('devices fetch failed')
+    console.log('devices fetch failed');
   }
-}
+};
 
 const fetchBuilds = async (codename) => {
   try {
     const res = await request(`${baseURL}/official_devices/master/builds/${codename}.json`);
 
     const promises = res.response.map(async (build) => {
-      let downloads = await fetchDownloadsCount(build.filename, codename);
-      let changelog = await fetchChangelog(build.filename, codename);
+      const downloads = await fetchDownloadsCount(build.filename, codename);
+      const changelog = await fetchChangelog(build.filename, codename);
 
       return {
         ...build,
@@ -40,25 +38,24 @@ const fetchBuilds = async (codename) => {
         datetime: humanDate(build.datetime),
         md5: build.id,
         downloads,
-        changelog
-      }
+        changelog,
+      };
     }).reverse();
 
-    return await Promise.all(promises);;
-
+    return await Promise.all(promises);
   } catch (e) {
     return [];
   }
-}
+};
 
 const fetchChangelog = async (filename, codename) => {
   try {
     const res = await request(`${baseURL}/official_devices/master/changelog/${codename}/${filename.replace('zip', 'txt')}`, false);
 
-    return res.includes('404') ? 'Changelog data no found': res;
+    return res.includes('404') ? 'Changelog data no found' : res;
   } catch (err) {
     return 'Changelog data no found';
   }
-}
+};
 
-export { fetchDevices, fetchBuilds }
+export { fetchDevices, fetchBuilds };

@@ -43,12 +43,12 @@
 </template>
 <script>
 export default {
-  name: "CardHeader",
+  name: 'CardHeader',
   computed: {
     device() {
-      this.$store.dispatch("filterDevice", this.$route.params);
+      this.$store.dispatch('filterDevice', this.$route.params);
       return this.$store.state.device;
-    }
-  }
+    },
+  },
 };
 </script>
