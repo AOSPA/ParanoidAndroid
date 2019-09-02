@@ -1,7 +1,7 @@
 :root {
   --background: #212121;
   --card: #1C1C1C;
-  --accent: #A97CF0;
+  --accent: #5485d8;
   --text: #f7f7f7 ;
 }
 
@@ -71,10 +71,6 @@ body {
     margin:0 0 0 0;
 }
 
-.card-action a {
-  color: var(--accent) !important;
-}
-
 .card {
   margin: 0px;
   background-color: var(--background) !important;
@@ -97,7 +93,10 @@ pre{
   word-break:break-all;
   overflow:hidden;
   white-space:pre-line;
-  font-size: 13px;
+  font-size: 14px;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-style: italic
 }
 
 .sidenav-trigger,.sidenav-trigger:hover  {
@@ -105,7 +104,7 @@ pre{
 }
 
 a:hover{
-  color: var(--accent) !important;
+  color: var(--text) !important;
 }
 
 span:hover{
@@ -132,7 +131,6 @@ table a {
 }
 
 .menu {
-  height: 280px;
   width: 220px;
   background-color: var(--card);
   position: fixed;
@@ -140,10 +138,15 @@ table a {
   top: 45px;
   margin: 15px;
   margin-bottom: 30px;
-  padding: 4px;
+  padding: 5px;
   text-align: center;
   z-index: 10;
-  border-radius: 2px;
+  border-radius: 3px;
+  box-shadow: 0 0.8px 4px rgba(0,0,0,0.07), 0 0.8px 2px rgba(0,0,0,0.15) !important;
+}
+
+.menu div {
+  clear: both;
 }
 
 .menu ul li{
@@ -155,6 +158,7 @@ table a {
   width: 30px;
   height: 30px;
   border-radius: 2px;
+  box-shadow: 0 0.8px 4px rgba(0,0,0,0.07), 0 0.8px 2px rgba(0,0,0,0.15) !important;
 }
 
 i {
@@ -167,9 +171,6 @@ i {
   max-width: 99%;
 }
 
-.bar-logo:hover {
-  background-color: transparent !important;
-}
 .upper-bold {
   text-transform: uppercase;
   font-weight: bold;
@@ -189,13 +190,20 @@ i {
   background-color: transparent !important;
 }
 
+.xda-buttons {
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 @media only screen and (min-width: 1000px) {
     #slide-out {
         transform: translateX(0%);
     }
     .center {
-      padding-top: 10px;
-      padding-bottom: 10px;
+      padding-top: 4px;
+      padding-bottom: 4px;
     }
 
     body{
@@ -216,6 +224,9 @@ i {
     .menu {
       top: 30px;
     }
+    .xda-buttons {
+      display: block;
+    }
 }
 
 nav .sidenav-trigger i {
@@ -224,10 +235,13 @@ nav .sidenav-trigger i {
 
 .search-link {
   font-family: "Product Sans";
-  padding: 13px !important;
-  padding-left: 15px !important;
+  background-color: transparent !important;
+  color: var(--accent) !important;
+  padding: 10px !important;
+  margin-left: 5px !important;
   display: block !important;
   text-align: left !important;
+  padding-left: 5px !important;
 
 }
 input {
@@ -235,7 +249,7 @@ input {
   margin: 0px !important;
   padding-left: 5px !important;
   border-bottom: none !important;
-  color: var(--text) !important;
+  color: var(--accent) !important;
 }
 
 input::placeholder {
@@ -259,6 +273,10 @@ input:focus {
   border: 1px solid var(--accent);
   border-radius: 3px;
 }
+.rounded {
+  border: 1px solid var(--accent);
+  border-radius: 25px;
+}
 .desc {
   font-size: 19px;
   padding: 10px;
@@ -267,10 +285,6 @@ input:focus {
 
 .builds {
   padding: 15px;
-}
-
-.builds h6 {
-  line-height: 10px;
 }
 
 tr th {
@@ -282,6 +296,10 @@ tr th {
   margin-right: 10px !important;
   margin-bottom: 15px;
   padding: 1px;
+}
+
+.builds h6 {
+  line-height: 10px;
 }
 
 .deviceprop {
@@ -301,7 +319,7 @@ tr th {
 }
 
 .home-bottom-info {
-  margin-top: 13%;
+  margin-top: 4%;
   max-width: 800px;
   width: 100%;
   display: flex;
@@ -328,9 +346,8 @@ tr th {
   font-size: 13px;
   font-family: "Product Sans";
   color: var(--text);
-  margin-top: 2px;
+  margin-bottom: 3px;
 }
-
 .credits a {
   background-color: transparent !important;
   color: var(--accent) !important;
@@ -347,6 +364,7 @@ a, span {
 .collapsible li div {
   background-color: var(--card);
   color: var(--text);
+  border-radius: 3px;
 }
 
 .collapsible-header, .collapsible, .collapsible-body {
@@ -369,14 +387,14 @@ a, span {
 }
 
 .collapsible-builds li {
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .buildChangelog pre {
-  max-height: 300px;
+  max-height: 230px;
   overflow-y: auto;
   background-color: var(--background);
-  padding: 5px;
+  padding: 8px;
   border-radius: 3px;
 }
 
@@ -399,12 +417,12 @@ a, span {
 }
 
 .buildbuttons {
-  padding-bottom: 10px;
-  padding-left: 10px;
-}
-
-.xda-buttons {
   padding-top: 5px;
+  padding-bottom: 15px;
+  padding-right: 15px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center
 }
 
 .z-depth-1, .collapsible, .sidenav {
@@ -412,6 +430,59 @@ a, span {
 }
 
 .z-depth-1, .sidenav, .buildcoll {
-  border-radius: 4px;
+  border-radius: 3px;
   box-shadow: 0 0.8px 4px rgba(0,0,0,0.07), 0 0.8px 2px rgba(0,0,0,0.15) !important;
+} 
+
+.loadContainer {
+  width: 100%;
+  height: 190px;
+  display: flex;
+}
+.spinner-accent-only {
+  border-color: var(--accent);
+}
+.preloader-wrapper {
+  margin: auto;
+}
+.btn {
+  color: var(--background) !important;
+  background-color: var(--accent) !important;
+  border-radius: 4px;
+  font-weight: 500;
+  margin-right: 5px;
+}
+
+.red-bg {
+  background-color: #c62828 !important;
+  color: white !important;
+}
+.red-icon {
+  color: #c62828 !important
+}
+
+.alert-box {
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  box-shadow: 0 0.8px 4px rgba(0,0,0,0.07), 0 0.8px 2px rgba(0,0,0,0.15) !important;
+}
+
+@-moz-document url-prefix() {
+  .sidenav {
+    height: 100% !important;
+  }
+}
+
+@supports (-ms-ime-align:auto) {
+  .sidenav {
+    height: 100% !important;
+  }
+}
+
+.changelog-button,.changelog-button a {
+  padding-bottom: 15px;
+  width: 95%;
 }

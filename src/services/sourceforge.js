@@ -1,5 +1,5 @@
 import request from '../helpers/request';
-import { getToday } from '../helpers/utils';
+import { getToday, getTimestamp } from '../helpers/utils';
 
 const baseURL = 'https://sourceforge.net/projects/krakenproject';
 
@@ -12,4 +12,9 @@ const fetchDownloadsCount = async (filename, codename) => {
   }
 };
 
-export { fetchDownloadsCount };
+const generateDownloadURL = (filename, codename) => {
+  const downloadBase = `https://downloads.sourceforge.net/project/krakenproject/${codename}/${filename}`;
+  return `${downloadBase}?r=&ts=${getTimestamp()}&use_mirror=autoselect`
+}
+
+export { fetchDownloadsCount, generateDownloadURL };

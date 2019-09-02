@@ -19,23 +19,40 @@
             <h6>{{device.codename}}</h6>
           </div>
 
-          <div class="deviceprop">
+          <div v-if="device.active" class="deviceprop">
             <i class="material-icons">person_outline</i>
             <h6>{{device.maintainer_name}}</h6>
           </div>
 
-          <div v-if="device.xda_thread" class="card-action xda-buttons">
+          <div v-if="!device.active" class="deviceprop">
+            <i class="material-icons red-icon">person_outline</i>
+            <h6>No maintainer</h6>
+          </div>
+
+          <div v-if="device.xda_thread && device.active" class="card-action xda-buttons">
             <a
               v-bind:href="device.maintainer_url"
               target="_blank"
-              class="waves-effect waves-teal btn-flat"
+              class="waves-effect btn"
             >GitHub Profile</a>
-            <a
-              v-bind:href="device.xda_thread"
-              target="_blank"
-              class="waves-effect waves-teal btn-flat"
-            >XDA Thread</a>
+            <a v-bind:href="device.xda_thread" target="_blank" class="waves-effect btn">XDA Thread</a>
           </div>
+
+          <div v-if="!device.active" class="card-action xda-buttons">
+            <a
+              href="https://forms.gle/AKinLpdy8VELaefE6"
+              target="_blank"
+              class="waves-effect btn red-bg"
+            >Become the maintainer</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div v-if="!device.active" class="row limiter">
+      <div class="col s12 m12">
+        <div class="red-bg alert-box">
+          <p>This device will no longer receive updates</p>
         </div>
       </div>
     </div>
@@ -43,12 +60,18 @@
 </template>
 <script>
 export default {
-  name: 'CardHeader',
+  name: "CardHeader",
   computed: {
     device() {
-      this.$store.dispatch('filterDevice', this.$route.params);
-      return this.$store.state.device;
-    },
-  },
+      this.$store.dispatch("filterDevice", this.$route.params);
+      const device = this.$store.state.device;
+
+      if(device && device.name) {
+        document.title = `${device.name} (${this.$route.params.codename}) | Kraken Download Center`;
+      }
+
+      return device;
+    }
+  }
 };
 </script>

@@ -2,12 +2,18 @@
   <ul id="slide-out" class="sidenav">
     <div>
       <router-link class="bar-logo center" :to="{name: 'home'}">
-        <Logo size="100"/>
-        <h4 class="accent">{{name}}</h4>
+        <div @click="hidebar">
+          <Logo size="130" />
+          <h4 class="accent">{{name}}</h4>
+        </div>
       </router-link>
 
-      <Search/>
-      <Loading v-if="$store.state.deviceLoader"/>
+      <router-link class="center changelog-button" :to="{name: 'home'}">
+        <a class="btn">View changelog</a>
+      </router-link>
+
+      <Search />
+      <Loading v-if="$store.state.deviceLoader" />
       <ul class="collapsible collapsible-accordion">
         <li v-for="brand in brands" :key="brand.name">
           <div class="collapsible-header">
@@ -33,22 +39,22 @@
 </template>
 
 <script>
-import Loading from './common/Loading.vue';
-import Logo from './common/Logo.vue';
-import Search from './common/Search.vue';
+import Loading from "./common/Loading.vue";
+import Logo from "./common/Logo.vue";
+import Search from "./common/Search.vue";
 
-import configs from '../configs';
+import configs from "../configs";
 
 export default {
-  name: 'Sidebar',
+  name: "Sidebar",
   components: {
     Loading,
     Logo,
-    Search,
+    Search
   },
   mounted() {
     // init collapsible
-    const elems = document.querySelector('.collapsible');
+    const elems = document.querySelector(".collapsible");
     M.Collapsible.init(elems);
   },
   computed: {
@@ -57,14 +63,13 @@ export default {
     },
     brands() {
       return this.$store.state.devices;
-    },
+    }
   },
   methods: {
     hidebar() {
-      // hide sidenav when click on device
-      const sidenav = document.querySelectorAll('.sidenav');
+      const sidenav = document.querySelectorAll(".sidenav");
       M.Sidenav.init(sidenav);
-    },
-  },
+    }
+  }
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <img :src="logo">
+    <img :src="logo" :width="size">
 </template>
 <script>
 import configs from '../../configs';
@@ -11,7 +11,7 @@ export default {
   },
   computed: {
     logo() {
-      return `${configs.APP_LOGO}?s=${this.$props.size}`;
+      return `${configs.APP_LOGO}`;
     },
   },
 };

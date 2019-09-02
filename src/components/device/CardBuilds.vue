@@ -30,7 +30,7 @@
                 <p>MD5: {{build.md5}}</p>
               </div>
               <div class="deviceprop">
-                <p>Version: {{build.version}}</p>
+                <p>Version: {{build.kk_version}} ({{build.version}})</p>
               </div>
               <div class="deviceprop">
                 <p>Downloads: {{build.downloads}}</p>
@@ -44,10 +44,10 @@
 
             <div class="buildbuttons">
               <a
-                v-bind:href="build.url"
+                v-on:click="download(build.filename, device.codename)"
                 download
                 target="_blank"
-                class="waves-effect waves-teal btn-flat"
+                class="btn"
               >Download</a>
             </div>
           </div>
@@ -59,6 +59,7 @@
 </template>
 <script>
 import Loading from '../common/Loading.vue';
+import { generateDownloadURL } from "../../services/sourceforge";
 
 export default {
   name: 'CardBuilds',
@@ -86,17 +87,24 @@ export default {
       instances.options.onCloseEnd = () => this.$router.replace({ name: 'filename', params: { filename: null } });
     },
     openBuild(index) {
-      if (!isNaN(index)) {
+      if (!isNaN(index) && index !== -1) {
         const elems = document.querySelector('.collapsible-builds');
         const instances = M.Collapsible.init(elems);
         instances.open(index);
       }
     },
+    download(file, codename) {
+      M.toast({ html: `Download Started` })
+      location.href = generateDownloadURL(file, codename);
+    }
   },
   computed: {
     deviceBuilds() {
       return this.$store.state.builds;
     },
+    device() {
+      return this.$store.state.device;
+    }
   },
 };
 </script>

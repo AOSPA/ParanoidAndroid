@@ -17,4 +17,9 @@ const humanDate = (timestamp) => {
   return `${d.getFullYear()}/${mm}/${dd}`;
 };
 
-export { getToday, humanDate, humanSize };
+const getTimestamp = () => {
+  let d = new Date();
+  return Math.floor(d.getTime() / 1000)
+}
+
+export { getToday, humanDate, humanSize, getTimestamp };

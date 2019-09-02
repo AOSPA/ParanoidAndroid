@@ -44,6 +44,7 @@ export const store = new Vuex.Store({
       }
     },
     async fetchBuilds({ commit, state }, props) {
+
       commit('updateBuildLoader', true);
       commit('setBuilds', []);
 
@@ -64,8 +65,7 @@ export const store = new Vuex.Store({
           .map(device => commit('setDevice', device)));
     },
     getIndexOfExpandedBuild({ commit, state }, filename) {
-      const index = state.builds.map((e, i) => (e.filename == filename ? i : null)).filter(e => e != null);
-      commit('setExpandedBuild', index);
+      commit('setExpandedBuild', state.builds.findIndex(b => b.filename === filename));
     },
 
   },

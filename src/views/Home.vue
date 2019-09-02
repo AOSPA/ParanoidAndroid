@@ -1,9 +1,9 @@
 <template>
   <div class="home center">
     <h3 class="accent welcome">{{subname}}</h3>
-    <Logo size="275"/>
+    <Logo size="350"/>
     <div class="home-desc">
-      <div class="desc square accent">{{description}}</div>
+      <div class="desc rounded accent">{{description}}</div>
     </div>
     <ProjectLink/>
     <Credits/>

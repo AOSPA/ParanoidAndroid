@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="square searchbar">
+    <div class="rounded searchbar">
       <div class="search-wrapper">
         <i class="material-icons is-s">search</i>
         <input style="width: 80%" type="text" v-model="search" placeholder="Type your device... ">
