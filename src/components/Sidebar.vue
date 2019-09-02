@@ -8,7 +8,7 @@
         </div>
       </router-link>
 
-      <router-link class="center changelog-button" :to="{name: 'home'}">
+      <router-link class="center changelog-button" :to="{name: 'changelog'}">
         <a class="btn">View changelog</a>
       </router-link>
 

@@ -58,4 +58,9 @@ const fetchChangelog = async (filename, codename) => {
   }
 };
 
-export { fetchDevices, fetchBuilds };
+const fetchROMChangelog = async () => {
+  const res = await request("https://raw.githubusercontent.com/KrakenProject/vendor_aosp/pie/CHANGELOG.md", false);
+  return res;
+}
+
+export { fetchDevices, fetchBuilds, fetchROMChangelog };
