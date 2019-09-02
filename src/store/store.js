@@ -44,7 +44,6 @@ export const store = new Vuex.Store({
       }
     },
     async fetchBuilds({ commit, state }, props) {
-
       commit('updateBuildLoader', true);
       commit('setBuilds', []);
 

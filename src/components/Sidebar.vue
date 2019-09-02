@@ -9,7 +9,7 @@
       </router-link>
 
       <router-link class="center changelog-button" :to="{name: 'changelog'}">
-        <a class="btn">View changelog</a>
+        <a @click="hidebar" class="btn">View changelog</a>
       </router-link>
 
       <Search />
@@ -39,22 +39,22 @@
 </template>
 
 <script>
-import Loading from "./common/Loading.vue";
-import Logo from "./common/Logo.vue";
-import Search from "./common/Search.vue";
+import Loading from './common/Loading.vue';
+import Logo from './common/Logo.vue';
+import Search from './common/Search.vue';
 
-import configs from "../configs";
+import configs from '../configs';
 
 export default {
-  name: "Sidebar",
+  name: 'Sidebar',
   components: {
     Loading,
     Logo,
-    Search
+    Search,
   },
   mounted() {
     // init collapsible
-    const elems = document.querySelector(".collapsible");
+    const elems = document.querySelector('.collapsible');
     M.Collapsible.init(elems);
   },
   computed: {
@@ -63,13 +63,13 @@ export default {
     },
     brands() {
       return this.$store.state.devices;
-    }
+    },
   },
   methods: {
     hidebar() {
-      const sidenav = document.querySelectorAll(".sidenav");
+      const sidenav = document.querySelectorAll('.sidenav');
       M.Sidenav.init(sidenav);
-    }
-  }
+    },
+  },
 };
 </script>

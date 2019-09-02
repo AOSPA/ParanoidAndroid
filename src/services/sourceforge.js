@@ -14,7 +14,7 @@ const fetchDownloadsCount = async (filename, codename) => {
 
 const generateDownloadURL = (filename, codename) => {
   const downloadBase = `https://downloads.sourceforge.net/project/krakenproject/${codename}/${filename}`;
-  return `${downloadBase}?r=&ts=${getTimestamp()}&use_mirror=autoselect`
-}
+  return `${downloadBase}?r=&ts=${getTimestamp()}&use_mirror=autoselect`;
+};
 
 export { fetchDownloadsCount, generateDownloadURL };

@@ -60,18 +60,18 @@
 </template>
 <script>
 export default {
-  name: "CardHeader",
+  name: 'CardHeader',
   computed: {
     device() {
-      this.$store.dispatch("filterDevice", this.$route.params);
-      const device = this.$store.state.device;
+      this.$store.dispatch('filterDevice', this.$route.params);
+      const { device } = this.$store.state;
 
-      if(device && device.name) {
+      if (device && device.name) {
         document.title = `${device.name} (${this.$route.params.codename}) | Kraken Download Center`;
       }
 
       return device;
-    }
-  }
+    },
+  },
 };
 </script>

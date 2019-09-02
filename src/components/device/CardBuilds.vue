@@ -59,7 +59,7 @@
 </template>
 <script>
 import Loading from '../common/Loading.vue';
-import { generateDownloadURL } from "../../services/sourceforge";
+import { generateDownloadURL } from '../../services/sourceforge';
 
 export default {
   name: 'CardBuilds',
@@ -94,9 +94,9 @@ export default {
       }
     },
     download(file, codename) {
-      M.toast({ html: `Download Started` })
+      M.toast({ html: 'Download Started' });
       location.href = generateDownloadURL(file, codename);
-    }
+    },
   },
   computed: {
     deviceBuilds() {
@@ -104,7 +104,7 @@ export default {
     },
     device() {
       return this.$store.state.device;
-    }
+    },
   },
 };
 </script>

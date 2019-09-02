@@ -13,10 +13,10 @@ export default {
     ChangelogView,
   },
   created() {
-    //this.$store.dispatch('fetchBuilds', this.$route.params);
+    // this.$store.dispatch('fetchBuilds', this.$route.params);
   },
   mounted() {
-    //console.log(this.$store.state.device);
+    // console.log(this.$store.state.device);
   },
 };
 </script>

@@ -18,8 +18,10 @@ const humanDate = (timestamp) => {
 };
 
 const getTimestamp = () => {
-  let d = new Date();
-  return Math.floor(d.getTime() / 1000)
-}
+  const d = new Date();
+  return Math.floor(d.getTime() / 1000);
+};
 
-export { getToday, humanDate, humanSize, getTimestamp };
+export {
+  getToday, humanDate, humanSize, getTimestamp,
+};
