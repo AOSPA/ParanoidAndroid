@@ -50,7 +50,7 @@ const fetchBuilds = async (codename) => {
 
 const fetchChangelog = async (filename, codename) => {
   try {
-    const res = await request(`${baseURL}/official_devices/master/changelog/${codename}/${filename.replace('zip', 'txt')}`, false);
+    const res = await request(`${baseURL}/official_devices/master/changelogs/${codename}/${filename.replace('zip', 'txt')}`, false);
 
     return res.includes('404') ? 'Changelog data no found' : res;
   } catch (err) {
