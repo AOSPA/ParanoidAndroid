@@ -21,7 +21,7 @@ const defaultColors = {
 }
 
 const backgrounds = ['#ffffff', '#212121', '#000000']
-const colors = ['#5485d8', '#2180EA', "#167C80", "#00B1E5", "#38853B", "#FF5722", "#E6125E", "#673AB7", "#D0422D", "#F4AC45", "#996A5A", "#A97CF0"]
+const colors = ['#5485d8', '#2180EA', "#167C80", "#00B1E5", "#38853B", "#FF5722", "#E6125E", "#673AB7", "#D0422D", "#F4AC45", "#996A5A", "#A97CF0", "#A4ADE9", "#84DFE2", "#FFC68A", "#7E8CE0", "#36C7D0", "#FFAF5F"]
 
 const renderList = (colors, applier, placeID) => {
   let ulEl = document.createElement('ul')

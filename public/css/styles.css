@@ -486,3 +486,17 @@ a, span {
   padding-bottom: 15px;
   width: 95%;
 }
+
+.logo-svg {
+  width: 130px;
+  height: 130px;
+}
+
+.logo-svg-big {
+  width: 355px;
+  height: 355px;
+}
+
+.bar-logo h4 {
+  margin-top: 5px;
+}
