@@ -2,7 +2,7 @@ import request from '../helpers/request';
 import { fetchDownloadsCount } from './sourceforge';
 import { humanDate, humanSize } from '../helpers/utils';
 
-const baseURL = 'https://raw.githubusercontent.com/KrakenProject';
+const baseURL = 'https://raw.githubusercontent.com/AOSPK';
 
 const fetchDevices = async () => {
   try {
@@ -59,7 +59,7 @@ const fetchChangelog = async (filename, codename) => {
 };
 
 const fetchROMChangelog = async () => {
-  const res = await request('https://raw.githubusercontent.com/KrakenProject/vendor_aosp/ten/CHANGELOG.md', false);
+  const res = await request('https://raw.githubusercontent.com/AOSPK/official_devices/master/changelogs/AOSPK_eleven.md', false);
   return res;
 };
 
