@@ -30,7 +30,7 @@
                 <p>MD5: {{build.md5}}</p>
               </div>
               <div class="deviceprop">
-                <p>Version: {{build.kk_version}} ({{build.version}})</p>
+                <p>Version: {{build.android}} ({{build.android}})</p>
               </div>
               <div class="deviceprop">
                 <p>Downloads: {{build.downloads}}</p>
