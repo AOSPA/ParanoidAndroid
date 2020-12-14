@@ -17,11 +17,11 @@ const toogleMenu = () => {
 const defaultColors = {
   "#ffffff": ['white', '#161616'], // card, text for white
   "#000000": ['#090909', '#f7f7f7'], // card, text for black
-  "default": ['#1C1C1C', '#f7f7f7', '#b5242d', '#212121'] // card, text, accent, bg for default
+  "default": ['#1C1C1C', '#f7f7f7', '#5485d8', '#212121'] // card, text, accent, bg for default
 }
 
 const backgrounds = ['#ffffff', '#212121', '#000000']
-const colors = ['#b5242d', '#2180EA', "#167C80", "#00B1E5", "#38853B", "#FF5722", "#E6125E", "#673AB7", "#D0422D", "#F4AC45", "#996A5A", "#A97CF0", "#A4ADE9", "#84DFE2", "#FFC68A", "#7E8CE0", "#36C7D0", "#FFAF5F"]
+const colors = ['#5485d8', '#2180EA', "#167C80", "#00B1E5", "#38853B", "#FF5722", "#E6125E", "#673AB7", "#D0422D", "#F4AC45", "#996A5A", "#A97CF0", "#A4ADE9", "#84DFE2", "#FFC68A", "#7E8CE0", "#36C7D0", "#FFAF5F"]
 
 const renderList = (colors, applier, placeID) => {
   let ulEl = document.createElement('ul')
