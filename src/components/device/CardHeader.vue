@@ -30,16 +30,7 @@
           </div>
 
           <div v-if="device.xda_thread && device.active" class="card-action xda-buttons">
-            <a
-              v-bind:href="device.maintainer_github"
-              target="_blank"
-              class="waves-effect btn"
-            >GitHub Profile</a>
-            <a
-              v-bind:href="device.maintainer_xda"
-              target="_blank"
-              class="waves-effect btn"
-            >XDA Profile</a>
+            <a v-bind:href="device.maintainer_xda"target="_blank" class="waves-effect btn">XDA Profile</a>
             <a v-bind:href="device.xda_thread" target="_blank" class="waves-effect btn">XDA Thread</a>
           </div>
 
