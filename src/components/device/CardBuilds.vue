@@ -38,7 +38,7 @@
             </div>
 
             <div class="buildChangelog">
-              <p class="label">Changelog</p>
+              <p class="label">Device Changelog</p>
               <pre>{{build.changelog}}</pre>
             </div>
 
