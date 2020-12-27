@@ -2,9 +2,7 @@
   <div class="home center">
     <h3 class="accent welcome">{{subname}}</h3>
     <Logo width="350px" />
-    <div class="home-desc">
-    <div class="desc rounded accent">{{description}}</div>
-    </div>
+    
     <ProjectLink/>
     <Credits/>
   </div>

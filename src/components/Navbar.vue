@@ -2,7 +2,11 @@
   <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper">
-        <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large left">
+        <a
+          href="#"
+          data-target="slide-out"
+          class="sidenav-trigger show-on-large left"
+        >
           <i class="material-icons left">menu</i>
         </a>
         <a onclick="toogleMenu()" class="sidenav-trigger show-on-large right">
@@ -15,11 +19,11 @@
 
 <script>
 export default {
-  name: 'Navbar',
+  name: "Navbar",
   mounted() {
     // init sidenav
-    const sidenav = document.querySelectorAll('.sidenav');
+    const sidenav = document.querySelectorAll(".sidenav");
     M.Sidenav.init(sidenav);
-  },
+  }
 };
 </script>
