@@ -1,13 +1,18 @@
 <template>
   <div class="row center">
     <div class="col s12 m12">
-      <ul class="collapsible collapsible-builds">
+
+        <ul v-if="!$store.state.buildLoader" class="collapsible collapsible-builds">
+
         <li
           v-for="build in deviceBuilds"
           :key="build.id"
           @click="setBuild(build.filename)"
           class="buildcoll"
+          style="background-color: #1C1C1C; padding-top:2px; margin-top: 10px"
         >
+
+        <h6 style="text-transform: uppercase;" class="upper-bold accent"> {{ build.type }} version</h6>
           <div class="collapsible-header white-text cardColor">
             <i class="material-icons">system_update</i>
             <span style="width: 100%">{{ build.filename }}</span>
@@ -52,8 +57,12 @@
             </div>
           </div>
         </li>
+        
       </ul>
       <Loading v-if="$store.state.buildLoader"/>
+      </div>
+        
+      
     </div>
   </div>
 </template>
@@ -74,8 +83,10 @@ export default {
       );
       document.title = this.$route.params.filename || `Download Kraken for ${this.$route.params.codename}`;
     }
-    this.openBuild(this.$store.state.expandedBuild);
+    setTimeout(() => {
+      this.openBuild(this.$store.state.expandedBuild);
     this.$store.dispatch('getIndexOfExpandedBuild', '');
+    }, 1000)
   },
   methods: {
     setBuild(obj) {
@@ -100,10 +111,15 @@ export default {
   },
   computed: {
     deviceBuilds() {
-      return this.$store.state.builds;
+      return this.$store.state.device.supported_types.map((type) => {
+          return  { ...this.$store.state.builds[type][0], type};
+      });
     },
     device() {
       return this.$store.state.device;
+    },
+    types() {
+      return this.$store.state.device.supported_types;
     },
   },
 };

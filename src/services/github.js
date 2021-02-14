@@ -2,7 +2,7 @@ import request from '../helpers/request';
 import { fetchDownloadsCount } from './sourceforge';
 import { humanDate, humanSize } from '../helpers/utils';
 
-const baseURL = 'https://raw.githubusercontent.com/AOSPK';
+const baseURL = 'https://raw.githubusercontent.com/aospk';
 
 const fetchDevices = async () => {
   try {
@@ -24,13 +24,13 @@ const fetchDevices = async () => {
   }
 };
 
-const fetchBuilds = async (codename) => {
+const fetchBuilds = async (codename, variant) => {
   try {
-    const res = await request(`${baseURL}/official_devices/master/builds/${codename}.json`);
+    const res = await request(`${baseURL}/official_devices/master/builds/${variant}/${codename}.json`);
 
     const promises = res.response.map(async (build) => {
       const downloads = await fetchDownloadsCount(build.filename, codename);
-      const changelog = await fetchChangelog(build.filename, codename);
+      const changelog = await fetchChangelog(build.filename, codename) || "";
 
       return {
         ...build,
@@ -46,6 +46,7 @@ const fetchBuilds = async (codename) => {
   } catch (e) {
     return [];
   }
+
 };
 
 const fetchChangelog = async (filename, codename) => {
