@@ -49,7 +49,7 @@
 
             <div class="buildbuttons">
               <a
-                v-on:click="download(build.filename, device.codename)"
+                v-on:click="download(build.filename, device.codename, build.romtype)"
                 download
                 target="_blank"
                 class="btn"
@@ -104,9 +104,9 @@ export default {
         instances.open(index);
       }
     },
-    download(file, codename) {
+    download(file, codename, romtype) {
       M.toast({ html: 'Download Started' });
-      location.href = generateDownloadURL(file, codename);
+      location.href = generateDownloadURL(file, codename, romtype);
     },
   },
   computed: {
