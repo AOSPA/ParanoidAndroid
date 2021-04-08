@@ -1,6 +1,29 @@
 <template>
   <div>
     <Search />
+        <div class="buttons">
+      <a
+        target="_blank"
+        href="https://legionos.org"
+        @click="hidebar"
+        class="btn"
+        >Home</a
+      >
+      <a
+        target="_blank"
+        href="https://legionos.org/stats.html"
+        @click="hidebar"
+        class="btn"
+        >Stats</a
+      >
+      <a
+        target="_blank"
+        href="https://blog.legionos.org"
+        @click="hidebar"
+        class="btn"
+        >Blog</a
+      >
+    </div>
     <div class="home-bottom-info">
       <div class="home-bottom-info-content">
         <a
@@ -67,5 +90,11 @@ svg {
   stroke-miterlimit: 1.41421;
   width: 32px;
   height: 32px;
+}
+.buttons {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 </style>
