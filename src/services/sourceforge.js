@@ -1,7 +1,7 @@
 import request from '../helpers/request';
 import { getToday, getTimestamp } from '../helpers/utils';
 
-const baseURL = 'https://sourceforge.net/projects/aospk';
+const baseURL = 'https://sourceforge.net/projects/legionrom';
 
 const fetchDownloadsCount = async (filename, codename) => {
   try {
@@ -13,7 +13,7 @@ const fetchDownloadsCount = async (filename, codename) => {
 };
 
 const generateDownloadURL = (filename, codename, romtype) => {
-  const downloadBase = `https://download.aospk.org/eleven/${codename}/${romtype}/${filename}`;
+  const downloadBase = `https://sourceforge.net/projects/legionrom/files//${codename}/${filename}`;
   return `${downloadBase}`;
 };
 

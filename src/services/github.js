@@ -2,11 +2,11 @@ import request from '../helpers/request';
 import { fetchDownloadsCount } from './sourceforge';
 import { humanDate, humanSize } from '../helpers/utils';
 
-const baseURL = 'https://raw.githubusercontent.com/aospk';
+const baseURL = 'https://raw.githubusercontent.com/rajkale99';
 
 const fetchDevices = async () => {
   try {
-    const res = await request(`${baseURL}/official_devices/master/devices.json`);
+    const res = await request(`${baseURL}/OTA/11/devices.json`);
 
     const brands = [];
     const devices = [];
@@ -26,7 +26,7 @@ const fetchDevices = async () => {
 
 const fetchBuilds = async (codename, variant) => {
   try {
-    const res = await request(`${baseURL}/official_devices/master/builds/${variant}/${codename}.json`);
+    const res = await request(`${baseURL}/OTA/11/${codename}/official/${variant}.json`);
 
     const promises = res.response.map(async (build) => {
       const downloads = await fetchDownloadsCount(build.filename, codename);
@@ -49,9 +49,9 @@ const fetchBuilds = async (codename, variant) => {
 
 };
 
-const fetchChangelog = async (filename, codename) => {
+const fetchChangelog = async (codename, varient) => {
   try {
-    const res = await request(`${baseURL}/official_devices/master/changelogs/${codename}/${filename.replace('zip', 'txt')}`, false);
+    const res = await request(`${baseURL}/OTA/11/${codename}/changelogs_${variant}.txt');
 
     return res.includes('404') ? 'Changelog data no found' : res;
   } catch (err) {
@@ -60,7 +60,7 @@ const fetchChangelog = async (filename, codename) => {
 };
 
 const fetchROMChangelog = async () => {
-  const res = await request('https://raw.githubusercontent.com/AOSPK/official_devices/master/changelogs/AOSPK_eleven.md', false);
+  const res = await request('https://raw.githubusercontent.com/rajkale99/OTA/11/rom_changelog.txt', false);
   return res;
 };
 
