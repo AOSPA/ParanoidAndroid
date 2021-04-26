@@ -51,7 +51,7 @@ const fetchBuilds = async (codename, variant) => {
 
 const fetchChangelog = async (codename, varient) => {
   try {
-    const res = await request(`${baseURL}/OTA/11/${codename}/changelogs_${variant}.txt', false);
+    const res = await request(`${baseURL}/OTA/11/${codename}/changelogs_${varient}.txt', false);
 
     return res.includes('404') ? 'Changelog data no found' : res;
   } catch (err) {
