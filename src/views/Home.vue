@@ -22,8 +22,8 @@ export default {
     Logo,
   },
   created() {
-    document.title = 'AOSPK - The Kraken Project';
-    document.head.querySelector('meta[name=description]').content = 'AOSPK - The Kraken Project | Download Center';
+    document.title = 'Project-LegionOS';
+    document.head.querySelector('meta[name=description]').content ='LegionOS | Download Center';
   },
   computed: {
     subname() {

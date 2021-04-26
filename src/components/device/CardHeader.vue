@@ -81,7 +81,7 @@ export default {
       const { device } = this.$store.state;
 
       if (device && device.name) {
-        document.title = `${device.name} (${this.$route.params.codename}) | Kraken Download Center`;
+        document.title = `${device.name} (${this.$route.params.codename}) | LegionOS Download Center`;
       }
 
       return device;

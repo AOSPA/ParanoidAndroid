@@ -2,8 +2,7 @@
   <div>
     <div class="credits">
       Project maintained by
-      <a href="https://github.com/LordShenron">LordShenron</a> and
-      <a href="https://github.com/ArunTeltia">Arun Teltia</a>
+      <a href="https://github.com/rajkale99">raj Kale</a>
     </div>
     <div class="credits">
       Website developed by

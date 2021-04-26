@@ -81,7 +81,7 @@ export default {
         'getIndexOfExpandedBuild',
         this.$route.params.filename,
       );
-      document.title = this.$route.params.filename || `Download Kraken for ${this.$route.params.codename}`;
+      document.title = this.$route.params.filename || `Download LegionOS for ${this.$route.params.codename}`;
     }
     setTimeout(() => {
       this.openBuild(this.$store.state.expandedBuild);

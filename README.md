@@ -1,4 +1,4 @@
-# kraken-vue
+# LefionOS Downloads
 
 ## Project setup
 ```
