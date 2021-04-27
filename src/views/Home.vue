@@ -1,8 +1,6 @@
 <template>
   <div class="home center">
-    <h3 class="accent welcome">{{subname}}</h3>
     <Logo width="350px" />
-    
     <ProjectLink/>
     <Credits/>
   </div>
@@ -12,7 +10,7 @@
 import ProjectLink from '../components/home/ProjectLink.vue';
 import Credits from '../components/home/Credits.vue';
 import configs from '../configs';
-import Logo from "../components/common/Logo";
+import Logo from "../components/common/Logomain";
 
 export default {
   name: 'Home',

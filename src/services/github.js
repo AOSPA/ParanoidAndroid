@@ -49,9 +49,9 @@ const fetchBuilds = async (codename, variant) => {
 
 };
 
-const fetchChangelog = async (codename, variant) => {
+const fetchChangelog = async (codename, filename) => {
   try {
-    const res = await request(`${baseURL}/OTA/11/${codename}/changelogs_${variant}.txt`);
+    const res = await request(`${baseURL}/OTA/11/changelogs/${codename}/${filename.replace('zip', 'txt')}`, false);
 
     return res.includes('404') ? 'Changelog data no found' : res;
   } catch (err) {
