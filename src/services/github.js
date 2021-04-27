@@ -30,7 +30,7 @@ const fetchBuilds = async (codename, variant) => {
 
     const promises = res.response.map(async (build) => {
       const downloads = await fetchDownloadsCount(build.filename, codename);
-      const changelog = await fetchChangelog(build.filename, codename) || "";
+      const changelog = await fetchChangelog(variant, codename) || "";
 
       return {
         ...build,
@@ -49,9 +49,9 @@ const fetchBuilds = async (codename, variant) => {
 
 };
 
-const fetchChangelog = async (codename, filename) => {
+const fetchChangelog = async (variant, codename) => {
   try {
-    const res = await request(`${baseURL}/OTA/11/changelogs/${codename}/${filename.replace('zip', 'txt')}`, false);
+    const res = await request(`${baseURL}/ota/11/${codename}/changelogs_${variant}.txt`, false);
 
     return res.includes('404') ? 'Changelog data no found' : res;
   } catch (err) {
