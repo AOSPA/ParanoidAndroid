@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 const execa = require("execa");
 const fs = require("fs");
+
 (async () => {
   try {
     await execa("git", ["checkout", "--orphan", "gh-pages"]);

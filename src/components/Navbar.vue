@@ -1,29 +1,36 @@
 <template>
-  <div class="navbar-fixed">
-    <nav>
+  <header class="navbar-fixed">
+    <nav style=" box-shadow: none !important; background-color: var(--background) !important">
       <div class="nav-wrapper">
         <a
           href="#"
           data-target="slide-out"
           class="sidenav-trigger show-on-large left"
         >
-          <i class="material-icons left">menu</i>
+          <i class="material-icons left menuIcon">menu</i>
         </a>
-        <a onclick="toogleMenu()" class="sidenav-trigger show-on-large right">
-          <i class="settings material-icons">color_lens</i>
-        </a>
+        <router-link :to="{ name: 'home' }" class="right" style="background-color: transparent; font-weight: normal !important">
+        <div class="right"  style="margin-right: 18px !important">
+          <p class="default paranoid navbar-logo">paranoid</p>
+          <p class="accent android navbar-logo">android</p>
+        </div>
+        </router-link>
       </div>
     </nav>
-  </div>
+  </header>
 </template>
 
 <script>
 export default {
   name: "Navbar",
   mounted() {
-    // init sidenav
     const sidenav = document.querySelectorAll(".sidenav");
     M.Sidenav.init(sidenav);
+  },
+  methods: {
+    goHome() {
+      window.location = '/';
+    },
   }
 };
 </script>

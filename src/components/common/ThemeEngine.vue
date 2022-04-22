@@ -20,6 +20,6 @@
 </template>
 <script>
 export default {
-  name: 'ThemeEngine',
+  name: "ThemeEngine",
 };
 </script>

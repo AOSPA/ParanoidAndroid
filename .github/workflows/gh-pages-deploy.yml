@@ -15,6 +15,6 @@ jobs:
       - name: Install packages
         run: npm i
       - name: Set Creds
-        run: git config user.name "rajkale99" && git config user.email "kaleraj.rk@gmail.com"
+        run: git config user.name "Herna1994" && git config user.email "herna@paranoidandroid.co"
       - name: Deploy
         run: npm run deploy

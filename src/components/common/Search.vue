@@ -13,28 +13,28 @@
         :to="{ name: 'device', params: { codename: device.codename }}"
         class="search-link"
         :data-device="device.codename"
-      >{{ device.name }} ({{device.codename}})</router-link>
+      >{{device.manufacturer}} {{ device.name }} ({{device.codename}})</router-link>
     </div>
   </div>
 </template>
 <script>
 export default {
-  name: 'Search',
+  name: "Search",
   data() {
     return {
-      search: '',
+      search: "",
     };
   },
   mounted() {
-    document.addEventListener('keypress', (event) => {
+    document.addEventListener("keypress", (event) => {
       if (event.keyCode == 13) {
-        if (document.querySelector('.search-link') != null) {
+        if (document.querySelector(".search-link") != null) {
           this.resetSearch();
           this.$router.push({
-            name: 'device',
+            name: "device",
             params: {
-              codename: document.querySelector('.search-link').attributes[
-                'data-device'
+              codename: document.querySelector(".search-link").attributes[
+                "data-device"
               ].value,
             },
           });
@@ -44,9 +44,9 @@ export default {
   },
   methods: {
     resetSearch() {
-      document.querySelectorAll('.wrapper')[0].style.display = 'none';
-      document.querySelectorAll('input')[0].blur();
-      this.search = '';
+      document.querySelectorAll(".wrapper")[0].style.display = "none";
+      document.querySelectorAll("input")[0].blur();
+      this.search = "";
     },
   },
   computed: {
@@ -65,3 +65,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.wrapper {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+</style>

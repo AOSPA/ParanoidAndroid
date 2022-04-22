@@ -1,13 +1,12 @@
 <template>
-  <img :src="flag" width="30px" alt="logo">
+  <img :src="flag" class="flag" width="30px" alt="logo">
 </template>
 <script>
 export default {
-  props: ['width', 'country'],
-  name: 'Flag',
+  props: ["width", "country"],
+  name: "Flag",
   computed: {
-    flag: function() {
-
+    flag() {
       const flags = {
         BR:
           "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/259/flag-brazil_1f1e7-1f1f7.png",
@@ -32,22 +31,28 @@ export default {
         KAZ:
           "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/281/flag-kazakhstan_1f1f0-1f1ff.png",
         ALB:
-          "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/281/flag-albania_1f1e6-1f1f1.png",     
+          "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/281/flag-albania_1f1e6-1f1f1.png",
+        GER:
+          "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/259/flag-germany_1f1e9-1f1ea.png",
+        SWI:
+          "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/259/flag-switzerland_1f1e8-1f1ed.png",
+        CHN:
+          "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/322/flag-china_1f1e8-1f1f3.png",
+        SKR:
+          "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/322/flag-south-korea_1f1f0-1f1f7.png",
       };
 
-      if(flags[this.country]) {
+      if (flags[this.country]) {
         return flags[this.country];
-      } else {
-        return "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Noflag.PNG/120px-Noflag.PNG"
       }
-
-    }
-  }
+      return "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Noflag.PNG/120px-Noflag.PNG";
+    },
+  },
 };
 
 </script>
 <style>
-img {
+.flag {
   padding-left: 5px;
   padding-top: 5px;
 }

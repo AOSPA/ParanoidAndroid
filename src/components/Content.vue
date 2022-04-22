@@ -49,7 +49,7 @@ export default {
   name: "Content",
   components: {
     Loading,
-    Search
+    Search,
   },
   mounted() {
     // init collapsible
@@ -62,13 +62,13 @@ export default {
     },
     brands() {
       return this.$store.state.devices;
-    }
+    },
   },
   methods: {
     hidebar1() {
       const sidenav1 = document.querySelectorAll(".sidenav1");
       M.Sidenav.init(sidenav1);
-    }
-  }
+    },
+  },
 };
 </script>

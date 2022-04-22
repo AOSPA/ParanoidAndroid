@@ -1,6 +1,11 @@
 <template>
-  <img
+<!--   <img
     class="color_animation"
+    :src="require('../../sapphire.png')"
+    :width="width"
+    alt="logo"
+  /> -->
+  <img
     :src="require('../../logo.png')"
     :width="width"
     alt="logo"
@@ -9,7 +14,7 @@
 <script>
 export default {
   props: ["width"],
-  name: "Logo"
+  name: "Logo",
 };
 </script>
 <style></style>

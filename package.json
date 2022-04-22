@@ -9,12 +9,14 @@
     "deploy": "node scripts/gh-pages-deploy.js"
   },
   "dependencies": {
+    "@materializecss/materialize": "^1.1.0",
     "babel-runtime": "^6.26.0",
     "core-js": "^2.6.12",
-    "materialize-css": "^1.0.0",
     "vue": "^2.6.12",
     "vue-markdown": "^2.2.4",
     "vue-router": "^3.4.9",
+    "vue-toastification": "^1.7.14",
+    "vuejs-twitter-feed": "^1.0.1",
     "vuex": "^3.6.0"
   },
   "devDependencies": {

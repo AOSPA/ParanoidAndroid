@@ -11,28 +11,24 @@
   </div>
 </template>
 <script>
-import Search from "../common/Search.vue";
 
 export default {
   name: "Credits",
-  components: {
-    Search
-  },
   data() {
     return {
       credits: [
         {
-          title: 'Project maintained by',
-          value: 'Raj Kale',
-          url: 'https://github.com/rajkale99',
+          title: "Project maintained by",
+          value: "Raj Kale",
+          url: "https://github.com/rajkale99",
         },
         {
           title: "Website Originally developed by",
           value: "andersonmendess",
-          url: "https://github.com/andersonmendess"
-        }
-      ]
+          url: "https://github.com/andersonmendess",
+        },
+      ],
     };
-  }
+  },
 };
 </script>

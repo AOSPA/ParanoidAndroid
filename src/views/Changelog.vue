@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import ChangelogView from '../components/changelog/ChangelogView.vue';
+import ChangelogView from "../components/changelog/ChangelogView.vue";
 
 export default {
-  name: 'Changelog',
+  name: "Changelog",
   components: {
     ChangelogView,
   },
