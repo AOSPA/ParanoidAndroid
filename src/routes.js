@@ -3,10 +3,10 @@ import Device from './views/Device.vue';
 import Changelog from './views/Changelog.vue';
 
 export const routes = [
-  { path: '/download', component: Home, name: 'home' },
-  { path: '/download/changelog', component: Changelog, name: 'changelog' },
+  { path: '/', component: Home, name: 'home' },
+  { path: '/changelog', component: Changelog, name: 'changelog' },
   {
-    path: '/download/:codename',
+    path: '/:codename',
     component: Device,
     name: 'device',
     children: [
