@@ -50,4 +50,31 @@ export default {
   opacity: 0
 }
 
+@font-face {
+   font-family: "HarmonyOS";
+   src: local("HarmonyOS"),
+   url(./fonts/HarmonyOS_Sans_Regular.ttf) format("truetype");
+   font-weight: normal;
+   font-style: normal;
+   font-display: swap;
+ }
+
+ @font-face {
+   font-family: "HarmonyOS";
+   src: local("HarmonyOS"),
+   url(./fonts/HarmonyOS_Sans_Bold.ttf) format("truetype");
+   font-weight: bold;
+   font-style: normal;
+   font-display: swap;
+ }
+
+ @font-face {
+   font-family: "HarmonyOS";
+   src: local("HarmonyOS"),
+   url(./fonts/HarmonyOS_Sans_Medium.ttf) format("truetype");
+   font-weight: medium;
+   font-style: medium;
+   font-display: swap;
+ }
+
 </style>

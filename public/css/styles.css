@@ -20,8 +20,8 @@ pre {
 }
 
 *,
-.input {
-  font-family: "Product Sans";
+input {
+  font-family: "HarmonyOS";
 }
 
 .accent {
@@ -336,7 +336,7 @@ nav .sidenav-trigger i {
 }
 
 .search-link {
-  font-family: "Product Sans";
+  font-family: "HarmonyOS";
   background-color: transparent !important;
   color: var(--text) !important;
   padding: 10px !important;
@@ -741,4 +741,8 @@ a.sources:not(:hover) {
 
 .description {
   color: var(--textHighlight) !important;
+}
+
+strong {
+  font-weight: bold !important;
 }

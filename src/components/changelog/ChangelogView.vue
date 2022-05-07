@@ -39,15 +39,10 @@ export default {
 .md {
   color: var(--text) !important;
 }
-.md code {
-  font-size: 33px;
-  font-weight: 500;
-  font-family: "Product Sans";
-  font-style: normal;
-}
+
 .md h2 {
   font-size: 24px;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .md p {
