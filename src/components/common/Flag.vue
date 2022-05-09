@@ -29,17 +29,21 @@ export default {
         MAUR:
           "https://upload.wikimedia.org/wikipedia/commons/7/77/Flag_of_Mauritius.svg",
         KAZ:
-          "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/281/flag-kazakhstan_1f1f0-1f1ff.png",
+          "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/259/flag-kazakhstan_1f1f0-1f1ff.png",
         ALB:
-          "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/281/flag-albania_1f1e6-1f1f1.png",
+          "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/259/flag-albania_1f1e6-1f1f1.png",
         GER:
           "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/259/flag-germany_1f1e9-1f1ea.png",
         SWI:
           "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/259/flag-switzerland_1f1e8-1f1ed.png",
         CHN:
-          "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/322/flag-china_1f1e8-1f1f3.png",
+          "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/259/flag-china_1f1e8-1f1f3.png",
         SKR:
-          "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/322/flag-south-korea_1f1f0-1f1f7.png",
+          "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/259/flag-south-korea_1f1f0-1f1f7.png",
+        TUR:
+          "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/259/flag-turkey_1f1f9-1f1f7.png",
+        SPA:
+          "https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/twitter/259/flag-spain_1f1ea-1f1f8.png",
       };
 
       if (flags[this.country]) {
