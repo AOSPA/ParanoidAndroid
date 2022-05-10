@@ -31,11 +31,11 @@ const fetchBuilds = async (codename, variant) => {
   try {
     const res = await request(`${baseURL}/ota_test/master/updates/${codename}`, true);
 
-    const filteredArray = res.updates.filter(updates => updates.romtype === variant);
+    const filteredArray = res.updates.filter(updates => updates.variant === variant);
     filteredArray.sort((a, b) => new Date(a.date) - new Date(b.date));
 
     const promises = filteredArray.map(async (build) => {
-      const changelog = await fetchChangelog(codename, build.romtype, build.version, build.number) || "";
+      const changelog = await fetchChangelog(codename, build.variant, build.major, build.minor) || "";
       const info = await fetchInfo(codename, build.filename);
 
       return {
@@ -54,18 +54,18 @@ const fetchBuilds = async (codename, variant) => {
   }
 };
 
-const fetchChangelog = async (codename, romtype, version, number) => {
+const fetchChangelog = async (codename, variant, major, minor) => {
   try {
     const res = await request(`${baseURL}/ota_test/master/updates/${codename}_changelog`, true);
 
     for (let index = 0; index < res.changelogs.length; index += 1) {
       const element = res.changelogs[index];
-      if (element.romtype === romtype && element.version === version && element.number === number) {
+      if (element.variant === variant && element.major === major && element.minor === minor) {
         return element.text;
       }
     }
   } catch (err) {
-    return "Changelog data no found";
+    return null;
   }
 };
 
@@ -85,8 +85,8 @@ const fetchChangelogMD = async (changeID) => {
   return res;
 };
 
-const generateDownloadURL = (filename, version, romtype, number, codename) => {
-  const downloadVersion = `${version.toLowerCase()}-${romtype.toLowerCase()}-${number.toLowerCase()}`;
+const generateDownloadURL = (filename, major, variant, minor, codename) => {
+  const downloadVersion = `${major.toLowerCase()}-${variant.toLowerCase()}-${minor.toLowerCase()}`;
   const downloadBase = `https://github.com/aospa-releases/${codename}/releases/download/${downloadVersion}/${filename}`;
   return `${downloadBase}`;
 };

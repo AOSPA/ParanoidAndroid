@@ -5,8 +5,8 @@
         v-if="!$store.state.buildLoader"
         class="collapsible collapsible-builds"
       >
-        <template v-for="romtype in deviceBuilds">
-          <template v-for="build in romtype">
+        <template v-for="variant in deviceBuilds">
+          <template v-for="build in variant">
             <li
               v-if="build.filename"
               :key="build.id"
@@ -16,8 +16,8 @@
               <div class="collapsible-header white-text">
                 <i class="material-icons">system_update</i>
                 <span class="upper-bold textHighlight" style="width: 100%"
-                  >{{ build.version }} {{ build.romtype }}
-                  {{ build.number }}</span
+                  >{{ build.major }} {{ build.variant }}
+                  {{ build.minor }}</span
                 >
                 <i class="material-icons">arrow_drop_down</i>
               </div>
@@ -42,7 +42,7 @@
                   </div>
                 </div>
 
-                <div v-if="build.romtype != 'Alpha'" class="buildChangelog">
+                <div v-if="build.changelog" class="buildChangelog">
                   <p class="label">Device Changelog</p>
                   <pre style="text-align: center"> {{ build.changelog }}</pre>
                 </div>
@@ -56,7 +56,7 @@
                     >Download</a
                   >
                   <!--               <a
-                v-on:click="download(build.filename, build.version, build.romtype, build.number, device.codename)"
+                v-on:click="download(build.filename, build.major, build.variant, build.minor, device.codename)"
                 download
                 target="_blank"
                 class="btn"
@@ -100,7 +100,7 @@ export default {
       const elems = document.querySelector(".collapsible-builds");
       const instances = M.Collapsible.init(elems);
 
-      const name = `${obj.version}-${obj.romtype}-${obj.number}`;
+      const name = `${obj.major}-${obj.variant}-${obj.minor}`;
 
       instances.options.onOpenEnd = () =>
         this.$router.push({
@@ -149,9 +149,9 @@ export default {
         toastClassName: "my-custom-toast-class",
       });
     },
-    /*     download(file, version, romtype, number, codename) {
+    /*     download(file, major, variant, minor, codename) {
       M.toast({ html: "Starting Download... Please Wait" });
-      location.href = generateDownloadURL(file, version, romtype, number, codename);
+      location.href = generateDownloadURL(file, major, variant, minor, codename);
     }, */
   },
   computed: {
