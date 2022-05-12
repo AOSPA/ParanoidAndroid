@@ -1,13 +1,13 @@
 <template>
   <div>
       <div class="buttons" style="margin-top: 1%">
+      <router-link :to="{ name: 'team' }">
       <a
-        target="_blank"
-        href="https://paranoidandroid.co"
         @click="hidebar"
         class="btn"
-        >Home</a
+        >Team</a
       >
+      </router-link>
       <a
         target="_blank"
         href="https://blog.paranoidandroid.co"

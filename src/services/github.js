@@ -29,7 +29,7 @@ const fetchDevices = async () => {
 
 const fetchBuilds = async (codename, variant) => {
   try {
-    const res = await request(`${baseURL}/ota_test/master/updates/${codename}`, true);
+    const res = await request(`${baseURL}/ota/master/updates/${codename}`, true);
 
     const filteredArray = res.updates.filter(updates => updates.variant === variant);
     filteredArray.sort((a, b) => new Date(a.date) - new Date(b.date));
@@ -56,7 +56,7 @@ const fetchBuilds = async (codename, variant) => {
 
 const fetchChangelog = async (codename, variant, major, minor) => {
   try {
-    const res = await request(`${baseURL}/ota_test/master/updates/${codename}_changelog`, true);
+    const res = await request(`${baseURL}/ota/master/updates/${codename}_changelog`, true);
 
     for (let index = 0; index < res.changelogs.length; index += 1) {
       const element = res.changelogs[index];
@@ -70,7 +70,7 @@ const fetchChangelog = async (codename, variant, major, minor) => {
 };
 
 const fetchROMChangelog = async () => {
-  const res = await request(`${baseURL}/ota_test/master/changelog`, true);
+  const res = await request(`${baseURL}/ota/master/changelog`, true);
 
   for (let index = 0; index < res.changelog.length; index += 1) {
     const element = res.changelog[index];
@@ -81,7 +81,13 @@ const fetchROMChangelog = async () => {
 };
 
 const fetchChangelogMD = async (changeID) => {
-  const res = await request(`${baseURL}/ota_test/master/changelogs/${changeID}.md`, false);
+  const res = await request(`${baseURL}/ota/master/changelogs/${changeID}.md`, false);
+  return res;
+};
+
+const fetchTeamMD = async () => {
+  const res = await request(`${baseURL}/ota/master/team.md`, false);
+  console.log(res);
   return res;
 };
 
@@ -108,5 +114,5 @@ const fetchInfo = async (codename, filename) => {
 };
 
 export {
-  fetchDevices, fetchBuilds, fetchROMChangelog, fetchChangelogMD, generateDownloadURL, fetchInfo,
+  fetchDevices, fetchBuilds, fetchROMChangelog, fetchChangelogMD, fetchTeamMD, generateDownloadURL, fetchInfo,
 };
