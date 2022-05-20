@@ -1,10 +1,15 @@
+window.addEventListener("DOMContentLoaded", () => {
+  applyTheme();
+});
+
 window.onload = function () {
+  showContent();
+}
+
+function applyTheme() {
   const useDark = window.matchMedia("(prefers-color-scheme: dark)");
 
   function toggleDarkMode(state) {
-    localStorage.removeItem("theme");
-    localStorage.removeItem("banner");
-    localStorage.removeItem("logo");
 
     if (state) {
       localStorage.setItem("theme", "dark");
@@ -45,15 +50,21 @@ window.onload = function () {
     window.dispatchEvent(new CustomEvent("theme-key-localstorage-changed", {
       detail: {
         banner: localStorage.getItem("banner"),
-        logo: localStorage.getItem("logo")
+        logo: localStorage.getItem("logo"),
+        theme: localStorage.getItem("theme")
       },
     }));
   }
 
   toggleDarkMode(useDark.matches);
   useDark.addListener(evt => toggleDarkMode(evt.matches));
-  window.addEventListener("DOMContentLoaded", load);
 };
+
+
+function showContent() {
+  document.body.style.visibility = 'visible';
+  document.body.style.opacity = 1;
+}
 
 const setupMetaColor = (color) => {
   document.querySelector("meta[name='theme-color']").content = color;
