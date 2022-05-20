@@ -1,6 +1,7 @@
 <template>
   <img
     loading="lazy"
+    decoding="async"
     :src="require('../../' + background)"
     :width="450"
     :height="450"

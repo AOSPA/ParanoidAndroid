@@ -5,7 +5,7 @@
     :width="width"
     alt="logo"
   /> -->
-  <img loading="lazy" :src="require('../../' + logo)" :width="width" alt="logo" />
+  <img loading="lazy" decoding="async" :src="require('../../' + logo)" :width="width" alt="logo" />
 </template>
 <script>
 export default {
