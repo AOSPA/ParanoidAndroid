@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="container">
-      <VueMarkdown loading="lazy" :source="team" class="md" style="text-align: center">
+      <VueMarkdown loading="lazy" :source="team" class="md" style="text-align: center; margin: 20px;">
       </VueMarkdown>
     </div>
   </div>
 </template>
 <script>
-import VueMarkdown from "vue-markdown";
+import VueMarkdown from "@theori/vue-markdown";
 
 import { fetchTeamMD } from "../../services/github";
 
@@ -24,6 +24,7 @@ export default {
   created() {
     fetchTeamMD().then(tm => (this.team = tm));
   },
+  
 };
 </script>
 <style scoped>

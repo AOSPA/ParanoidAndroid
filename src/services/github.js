@@ -87,7 +87,6 @@ const fetchChangelogMD = async (changeID) => {
 
 const fetchTeamMD = async () => {
   const res = await request(`${baseURL}/ota/master/team.md`, false);
-  console.log(res);
   return res;
 };
 

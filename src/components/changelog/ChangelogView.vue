@@ -1,13 +1,13 @@
 <template>
   <div>
     <div v-for="change in changes.changelog" :key="change.id" class="container">
-      <VueMarkdown loading="lazy" :source="change.md" class="md" style="text-align: center">
+      <VueMarkdown loading="lazy" :source="change.md" class="md" style="text-align: center; margin: 20px;">
       </VueMarkdown>
     </div>
   </div>
 </template>
 <script>
-import VueMarkdown from "vue-markdown";
+import VueMarkdown from "@theori/vue-markdown";
 
 import { fetchROMChangelog } from "../../services/github";
 
