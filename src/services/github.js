@@ -1,7 +1,7 @@
 import request from "../helpers/request";
 import { humanDate, humanSize } from "../helpers/utils";
 
-const baseURL = "https://raw.githubusercontent.com/Herna1994";
+const baseURL = "https://raw.githubusercontent.com/AOSPA";
 
 const fetchDevices = async () => {
   try {
