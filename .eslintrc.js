@@ -11,6 +11,14 @@ module.exports = {
     quotes: [2, "double", { avoidEscape: true }],
   },
   parserOptions: {
-    parser: "babel-eslint",
+    parser: "@babel/eslint-parser",
+    sourceType: "module",
+    allowImportExportEverywhere: false,
+    ecmaFeatures: {
+      globalReturn: false,
+    },
+    babelOptions: {
+      configFile: "./babel.config.js",
+    },
   },
 };
