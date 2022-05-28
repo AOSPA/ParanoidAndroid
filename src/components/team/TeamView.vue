@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <VueMarkdown loading="lazy" :source="team" class="md" style="text-align: center; margin: 20px;">
+      <VueMarkdown loading="lazy" :source="team.toString()" class="md" style="text-align: center; margin: 20px;">
       </VueMarkdown>
     </div>
   </div>
