@@ -28,10 +28,8 @@ export default {
 </script>
 <style scoped>
 .container {
-  padding: 20px;
   background-color: var(--card);
   margin-top: 50px;
-  border-radius: 24px;
   margin-bottom: 50px;
 }
 </style>

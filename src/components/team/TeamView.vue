@@ -1,15 +1,13 @@
 <template>
-  <div>
     <div class="container">
       <VueMarkdown loading="lazy" :source="team.toString()" class="md" style="text-align: center; margin: 20px;">
       </VueMarkdown>
     </div>
-  </div>
 </template>
 <script>
 import VueMarkdown from "@theori/vue-markdown";
 
-import { fetchTeamMD } from "../../services/github";
+import { fetchTeamInfo } from "../../services/github";
 
 export default {
   name: "ChangelogView",
@@ -22,17 +20,15 @@ export default {
     };
   },
   created() {
-    fetchTeamMD().then(tm => (this.team = tm));
+    fetchTeamInfo().then(tm => (this.team = tm));
   },
   
 };
 </script>
 <style scoped>
 .container {
-  padding: 20px;
   background-color: var(--card);
   margin-top: 50px;
-  border-radius: 24px;
   margin-bottom: 50px;
 }
 </style>

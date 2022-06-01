@@ -12,11 +12,5 @@ export default {
   components: {
     TeamView,
   },
-  created() {
-    // this.$store.dispatch('fetchBuilds', this.$route.params);
-  },
-  mounted() {
-    // console.log(this.$store.state.device);
-  },
 };
 </script>

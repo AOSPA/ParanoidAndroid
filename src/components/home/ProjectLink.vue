@@ -8,13 +8,14 @@
         >Team</a
       >
       </router-link>
+      <router-link :to="{ name: 'blog' }">
       <a
         target="_blank"
-        href="https://blog.paranoidandroid.co"
         @click="hidebar"
         class="btn"
         >Blog</a
       >
+      </router-link>
     </div>
     <div class="home-bottom-info">
       <div class="home-bottom-info-content">

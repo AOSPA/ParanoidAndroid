@@ -85,8 +85,24 @@ const fetchChangelogMD = async (changeID) => {
   return res;
 };
 
-const fetchTeamMD = async () => {
+const fetchTeamInfo = async () => {
   const res = await request(`${baseURL}/ota/master/team.md`, false);
+  return res;
+};
+
+const fetchBlogPosts = async () => {
+  const res = await request(`${baseURL}/ota/master/blog`, true);
+
+  for (let index = 0; index < res.posts.length; index += 1) {
+    const element = res.posts[index];
+    element.md = await fetchPostMD(element.id);
+  }
+
+  return res;
+};
+
+const fetchPostMD = async (postID) => {
+  const res = await request(`${baseURL}/ota/master/posts/${postID}.md`, false);
   return res;
 };
 
@@ -113,5 +129,5 @@ const fetchInfo = async (codename, filename) => {
 };
 
 export {
-  fetchDevices, fetchBuilds, fetchROMChangelog, fetchChangelogMD, fetchTeamMD, generateDownloadURL, fetchInfo,
+  fetchDevices, fetchBuilds, fetchROMChangelog, fetchChangelogMD, fetchTeamInfo, fetchBlogPosts, fetchPostMD, generateDownloadURL, fetchInfo,
 };

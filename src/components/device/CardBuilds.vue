@@ -68,7 +68,7 @@
         </template>
       </ul>
       <Loading v-if="$store.state.buildLoader" />
-    </div>
+   </div>
   </div>
 </template>
 <script>
@@ -171,7 +171,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .fade-enter-active,
 .fade-leave-active {
   transition-duration: 0.3s;
@@ -210,5 +210,12 @@ export default {
 
 .zips > .collapsible-body {
   background-color: transparent !important;
+}
+
+.collapsible-body .deviceprop,
+.collapsible-body p {
+  margin: 1px;
+  margin-top: 3px;
+  display: block;
 }
 </style>
