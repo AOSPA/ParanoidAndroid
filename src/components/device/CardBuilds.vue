@@ -47,21 +47,28 @@
                   <pre style="text-align: center"> {{ build.changelog }}</pre>
                 </div>
 
-                <div class="buildbuttons">
-                  <a
-                    v-on:click="download(build.url)"
-                    download
-                    target="_blank"
-                    class="btn buttonInsideCard"
-                    >Download</a
-                  >
+                  <div class="buildButtons" style="text-align: center">
+                     <a v-if="build.url"
+                       v-on:click="download(build.url)"
+                       download
+                       target="_blank"
+                       class="btn buttonInsideCard"
+                       >Download</a
+                     >
+                 <a v-if="build.mirror"
+                       v-on:click="download(build.mirror)"
+                       download
+                       target="_blank"
+                       class="btn buttonInsideCard"
+                       >Mirror</a
+                     >
+                 </div>
                   <!--               <a
                 v-on:click="download(build.filename, build.major, build.variant, build.minor, device.codename)"
                 download
                 target="_blank"
                 class="btn"
               >Download</a> -->
-                </div>
               </div>
             </li>
           </template>
