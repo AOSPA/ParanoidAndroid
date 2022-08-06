@@ -1,5 +1,5 @@
 <template>
-  <header class="navbar-fixed">
+  <header>
     <nav style=" box-shadow: none !important; background-color: var(--background) !important">
       <div class="nav-wrapper">
         <a
