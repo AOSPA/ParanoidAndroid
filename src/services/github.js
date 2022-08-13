@@ -27,15 +27,15 @@ const fetchDevices = async () => {
   }
 };
 
-const fetchBuilds = async (codename, variant) => {
+const fetchBuilds = async (codename, romtype) => {
   try {
     const res = await request(`${baseURL}/ota/master/updates/${codename}`, true);
 
-    const filteredArray = res.updates.filter(updates => updates.variant === variant);
+    const filteredArray = res.updates.filter(updates => updates.romtype === romtype);
     filteredArray.sort((a, b) => new Date(a.date) - new Date(b.date));
 
     const promises = filteredArray.map(async (build) => {
-      const changelog = await fetchChangelog(codename, build.variant, build.major, build.minor) || "";
+      const changelog = await fetchChangelog(codename, build.romtype, build.version, build.number) || "";
       const info = await fetchInfo(codename, build.filename);
 
       return {
@@ -54,13 +54,13 @@ const fetchBuilds = async (codename, variant) => {
   }
 };
 
-const fetchChangelog = async (codename, variant, major, minor) => {
+const fetchChangelog = async (codename, romtype, version, number) => {
   try {
     const res = await request(`${baseURL}/ota/master/updates/${codename}_changelog`, true);
 
     for (let index = 0; index < res.changelogs.length; index += 1) {
       const element = res.changelogs[index];
-      if (element.variant === variant && element.major === major && element.minor === minor) {
+      if (element.romtype === romtype && element.version === version && element.number === number) {
         return element.text;
       }
     }
@@ -106,8 +106,8 @@ const fetchPostMD = async (postID) => {
   return res;
 };
 
-const generateDownloadURL = (filename, major, variant, minor, codename) => {
-  const downloadVersion = `${major.toLowerCase()}-${variant.toLowerCase()}-${minor.toLowerCase()}`;
+const generateDownloadURL = (filename, version, romtype, number, codename) => {
+  const downloadVersion = `${version.toLowerCase()}-${romtype.toLowerCase()}-${number.toLowerCase()}`;
   const downloadBase = `https://github.com/aospa-releases/${codename}/releases/download/${downloadVersion}/${filename}`;
   return `${downloadBase}`;
 };

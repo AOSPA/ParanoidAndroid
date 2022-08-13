@@ -5,8 +5,8 @@
         v-if="!$store.state.buildLoader"
         class="collapsible collapsible-builds"
       >
-        <template v-for="variant in deviceBuilds">
-          <template v-for="build in variant">
+        <template v-for="romtype in deviceBuilds">
+          <template v-for="build in romtype">
             <li
               v-if="build.filename"
               :key="build.id"
@@ -16,8 +16,8 @@
               <div class="collapsible-header white-text">
                 <i class="material-icons">system_update</i>
                 <span class="upper-bold textHighlight" style="width: 100%"
-                  >{{ build.major }} {{ build.variant }}
-                  {{ build.minor }}</span
+                  >{{ build.version }} {{ build.romtype }}
+                  {{ build.number }}</span
                 >
                 <i class="material-icons">arrow_drop_down</i>
               </div>
@@ -64,7 +64,7 @@
                      >
                  </div>
                   <!--               <a
-                v-on:click="download(build.filename, build.major, build.variant, build.minor, device.codename)"
+                v-on:click="download(build.filename, build.version, build.romtype, build.number, device.codename)"
                 download
                 target="_blank"
                 class="btn"
@@ -107,7 +107,7 @@ export default {
       const elems = document.querySelector(".collapsible-builds");
       const instances = M.Collapsible.init(elems);
 
-      const name = `${obj.major}-${obj.variant}-${obj.minor}`;
+      const name = `${obj.version}-${obj.romtype}-${obj.number}`;
 
       instances.options.onOpenEnd = () =>
         this.$router.push({
@@ -156,9 +156,9 @@ export default {
         toastClassName: "my-custom-toast-class",
       });
     },
-    /*     download(file, major, variant, minor, codename) {
+    /*     download(file, version, romtype, number, codename) {
       M.toast({ html: "Starting Download... Please Wait" });
-      location.href = generateDownloadURL(file, major, variant, minor, codename);
+      location.href = generateDownloadURL(file, version, romtype, number, codename);
     }, */
   },
   computed: {
