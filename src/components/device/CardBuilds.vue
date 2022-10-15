@@ -62,13 +62,6 @@
                        class="btn buttonInsideCard"
                        >Fastboot option</a
                      >
-                     <a v-if="build.mirror"
-                       v-on:click="download(build.mirror)"
-                       download
-                       target="_blank"
-                       class="btn buttonInsideCard"
-                       >Mirror</a
-                     >
                  </div>
                  <div class="buildButtons" style="text-align: center">
                   <a v-if="build.telegram"
@@ -77,6 +70,13 @@
                        target="_blank"
                        class="btn buttonInsideCard"
                        >Telegram</a
+                     >
+                     <a v-if="build.mirror"
+                       v-on:click="download(build.mirror)"
+                       download
+                       target="_blank"
+                       class="btn buttonInsideCard"
+                       >Mirror</a
                      >
                  </div>
                   <!--               <a
