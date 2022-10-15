@@ -53,7 +53,14 @@
                        download
                        target="_blank"
                        class="btn buttonInsideCard"
-                       >Download</a
+                       >Recovery option</a
+                     >
+                     <a v-if="build.fastboot"
+                       v-on:click="download(build.url)"
+                       download
+                       target="_blank"
+                       class="btn buttonInsideCard"
+                       >Fastboot option</a
                      >
                      <a v-if="build.mirror"
                        v-on:click="download(build.mirror)"
