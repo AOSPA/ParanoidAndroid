@@ -56,7 +56,7 @@
                        >Recovery option</a
                      >
                      <a v-if="build.fastboot"
-                       v-on:click="download(build.url)"
+                       v-on:click="download(build.fastboot)"
                        download
                        target="_blank"
                        class="btn buttonInsideCard"
