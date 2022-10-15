@@ -55,12 +55,21 @@
                        class="btn buttonInsideCard"
                        >Download</a
                      >
-                 <a v-if="build.mirror"
+                     <a v-if="build.mirror"
                        v-on:click="download(build.mirror)"
                        download
                        target="_blank"
                        class="btn buttonInsideCard"
                        >Mirror</a
+                     >
+                 </div>
+                 <div class="buildButtons" style="text-align: center">
+                  <a v-if="build.telegram"
+                       v-on:click="download(build.telegram)"
+                       download
+                       target="_blank"
+                       class="btn buttonInsideCard"
+                       >Telegram</a
                      >
                  </div>
                   <!--               <a
