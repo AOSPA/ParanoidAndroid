@@ -102,10 +102,12 @@ export default {
 .router-link-active {
   font-weight: bold !important;
   background-color: var(--container);
+  color: var(--textHighlight) !important;
 }
 
 .sidenav li > a:hover {
   background-color: var(--highlightSelection) !important;
+  color: var(--text) !important;
 } 
 
 .sidenav li > .router-link-active:hover {

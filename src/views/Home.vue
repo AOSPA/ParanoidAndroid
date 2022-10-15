@@ -1,7 +1,13 @@
 <template>
 <div class="test">
   <div class="center fragment-root" >
-    <Banner class="bannerLogo" />
+    <h3 class="accent">
+      Topaz<sup>13</sup> Alpha
+    </h3>
+    <h5 class="accent">
+      by the <strong>paranoidandroid</strong> team
+    </h5>
+    <Banner class="bannerLogo"/>
     <ProjectLink />
   </div>
 </div>

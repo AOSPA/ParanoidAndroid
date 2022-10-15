@@ -82,6 +82,7 @@ svg {
   stroke-miterlimit: 1.41421;
   width: 32px;
   height: 32px;
+  fill: var(--accent) !important;
 }
 .buttons {
   display: flex;

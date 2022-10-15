@@ -13,16 +13,16 @@ function applyTheme() {
 
     if (state) {
       localStorage.setItem("theme", "dark");
-      localStorage.setItem("banner", "banner-dark.webp");
+      localStorage.setItem("banner", "logo_d.svg");
       localStorage.setItem("logo", "logo_dark.webp");
-      setCssVar("--accent", "#D0BCFF");
-      setCssVar("--background", "#1C1B1F");
-      setCssVar("--container", "rgba(100,83,148, 0.35)");
-      setCssVar("--buttonHighlight", "#4F378B")
+      setCssVar("--accent", "#fedcda");
+      setCssVar("--background", "#201a1a");
+      setCssVar("--container", "rgb(255, 218, 217)");
+      setCssVar("--buttonHighlight", "#372f2d")
       setCssVar("--searchColor", "#000000");
-      setCssVar("--card", "#272630");
-      setCssVar("--text", "#ffffff");
-      setCssVar("--textHighlight", "#ffffff");
+      setCssVar("--card", "#372f2d");
+      setCssVar("--text", "#faf0ef");
+      setCssVar("--textHighlight", "#1a1b1b");
       setCssVar("--secondaryTextColor", "#272630");
       setCssVar("--selectedItemDescription", "#E6E1E5");
       setCssVar("--buttonBackground", "#1C1B1F");
@@ -30,16 +30,16 @@ function applyTheme() {
       setCssVar("--highlightSelection", "rgba(255,255,255, 0.05)");
     } else {
       localStorage.setItem("theme", "white");
-      localStorage.setItem("banner", "banner-light.webp");
+      localStorage.setItem("banner", "logo.svg");
       localStorage.setItem("logo", "logo_light.webp");
-      setCssVar("--accent", "#4958a9");
-      setCssVar("--container", "#eadeff");
-      setCssVar("--buttonHighlight", "#D0BCFF")
+      setCssVar("--accent", "#904a48");
+      setCssVar("--background", "#fceeed");
+      setCssVar("--container", "#904a48");
+      setCssVar("--buttonHighlight", "#eae2df")
       setCssVar("--searchColor", "#fffbfd");
-      setCssVar("--background", "#eae3f1");
-      setCssVar("--card", "#f3edf8");
+      setCssVar("--card", "#fff8f6");
       setCssVar("--text", "#494550");
-      setCssVar("--textHighlight", "#272630");
+      setCssVar("--textHighlight", "#ffffff");
       setCssVar("--secondaryTextColor", "#79737e");
       setCssVar("--selectedItemDescription", "#21035b");
       setCssVar("--buttonBackground", "#fdfbff");
@@ -49,7 +49,7 @@ function applyTheme() {
 
     window.dispatchEvent(new CustomEvent("theme-key-localstorage-changed", {
       detail: {
-        banner: localStorage.getItem("banner"),
+        //banner: localStorage.getItem("banner"),
         logo: localStorage.getItem("logo"),
         theme: localStorage.getItem("theme")
       },

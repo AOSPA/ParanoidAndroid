@@ -15,7 +15,7 @@
             >
               <div class="collapsible-header white-text">
                 <i class="material-icons">system_update</i>
-                <span class="upper-bold textHighlight" style="width: 100%"
+                <span class="upper-bold" style="width: 100%"
                   >{{ build.version }} {{ build.romtype }}
                   {{ build.number }}</span
                 >

@@ -1,6 +1,6 @@
 <template>
   <div v-if="device.name">
-    <h5 class="center upper-bold textHighlight">
+    <h5 class="center upper-bold">
       {{ device.manufacturer }} {{ device.name }} ({{ device.codename }})
     </h5>
     <div class="row limiter">
