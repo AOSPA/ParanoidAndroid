@@ -46,7 +46,7 @@ const fetchBuilds = async (codename, romtype) => {
         downloads: info.download_count, // info.download_count for tracking downloads from GH releases.
         changelog,
       };
-    })
+    }).reverse()
 
     return await Promise.all(promises);
   } catch (e) {

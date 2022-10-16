@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-for="change in changes.changelog" :key="change.id" class="container">
-      <VueMarkdown loading="lazy" :source="change.md.toString()" class="md" style="text-align: center; margin: 20px;">
+    <div v-for="change in changes.changelog" :key="change.id" class="container" v-if="change.id != ''">
+        <VueMarkdown loading="lazy" :source="change.md.toString()" class="md" style="text-align: center; margin: 20px;">
       </VueMarkdown>
     </div>
   </div>
