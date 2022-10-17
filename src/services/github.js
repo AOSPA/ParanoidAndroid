@@ -32,7 +32,7 @@ const fetchBuilds = async (codename, romtype) => {
     const res = await request(`${baseURL}/ota/master/updates/${codename}`, true);
 
     const filteredArray = res.updates.filter(updates => updates.romtype === romtype);
-    filteredArray.sort((a, b) => parseFloat(a.version) - parseFloat(b.version));
+    filteredArray.sort((a, b) => parseFloat(b.datetime) - parseFloat(a.datetime));
 
     const promises = filteredArray.map(async (build) => {
       const changelog = await fetchChangelog(codename, build.romtype, build.version, build.number) || "";
@@ -46,7 +46,7 @@ const fetchBuilds = async (codename, romtype) => {
         downloads: info.download_count, // info.download_count for tracking downloads from GH releases.
         changelog,
       };
-    }).reverse()
+    })
 
     return await Promise.all(promises);
   } catch (e) {
