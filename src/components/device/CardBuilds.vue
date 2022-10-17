@@ -47,6 +47,7 @@
                   <pre style="text-align: center"> {{ build.changelog }}</pre>
                 </div>
 
+                <div v-if="!build.switchLinks">
                   <div class="buildButtons" style="text-align: center">
                      <a v-if="build.url"
                        v-on:click="download(build.url)"
@@ -79,6 +80,35 @@
                        >Mirror</a
                      >
                  </div>
+                </div>
+
+                <div v-if="build.switchLinks">
+                  <div class="buildButtons" style="text-align: center">
+                     <a v-if="build.mirror"
+                       v-on:click="download(build.mirror)"
+                       download
+                       target="_blank"
+                       class="btn buttonInsideCard"
+                       >Download</a
+                     >
+                 </div>
+                 <div class="buildButtons" style="text-align: center">
+                  <a v-if="build.telegram"
+                       v-on:click="download(build.telegram)"
+                       download
+                       target="_blank"
+                       class="btn buttonInsideCard"
+                       >Telegram</a
+                     >
+                     <a v-if="build.url"
+                       v-on:click="download(build.url)"
+                       download
+                       target="_blank"
+                       class="btn buttonInsideCard"
+                       >Mirror (only recovery)</a
+                     >
+                 </div>
+                </div>
                   <!--               <a
                 v-on:click="download(build.filename, build.version, build.romtype, build.number, device.codename)"
                 download
