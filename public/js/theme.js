@@ -49,7 +49,7 @@ function applyTheme() {
 
     window.dispatchEvent(new CustomEvent("theme-key-localstorage-changed", {
       detail: {
-        //banner: localStorage.getItem("banner"),
+        banner: localStorage.getItem("banner"),
         logo: localStorage.getItem("logo"),
         theme: localStorage.getItem("theme")
       },
