@@ -668,6 +668,22 @@ a.sources:not(:hover) {
   background-color: var(--container);
 }
 
+.posts.active span{
+  color: var(--textHighlight)
+}
+
+.posts.active p{
+  color: var(--textHighlight) !important
+}
+
+.posts.active i{
+  color: var(--textHighlight) !important
+}
+
+.posts.active strong{
+  color: var(--textHighlight) !important
+}
+
 .alert-box {
   height: 55px;
   display: flex;
