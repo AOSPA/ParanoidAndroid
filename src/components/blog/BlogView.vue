@@ -10,7 +10,7 @@
               class="posts"
             >
               <div class="collapsible-header white-text">
-                <span class="upper-bold textHighlight" style="width: 100%"
+                <span class="upper-bold" style="width: 100%"
                   >{{ post.title }}</span
                 >
                 <i class="material-icons">arrow_drop_down</i>
