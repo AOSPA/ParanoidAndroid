@@ -760,7 +760,7 @@ a.sources:not(:hover) {
   cursor: pointer;
 }
 
-.md5:hover {
+.sha256:hover {
   color: var(--textHighlight) !important;
   cursor: pointer;
 }

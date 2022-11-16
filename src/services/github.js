@@ -27,24 +27,26 @@ const fetchDevices = async () => {
   }
 };
 
-const fetchBuilds = async (codename, romtype) => {
+const fetchBuilds = async (codename, build_type) => {
   try {
     const res = await request(`${baseURL}/ota/master/updates/${codename}`, true);
 
-    const filteredArray = res.updates.filter(updates => updates.romtype === romtype);
+    const filteredArray = res.updates.filter(updates => updates.build_type === build_type);
     filteredArray.sort((a, b) => parseFloat(b.datetime) - parseFloat(a.datetime));
 
     const promises = filteredArray.map(async (build) => {
-      const changelog = await fetchChangelog(codename, build.romtype, build.version, build.number) || "";
-      const info = await fetchInfo(codename, build.filename);
+      //const changelog = await fetchChangelog(codename, build.build_type, build.version, build.version_code) || "";
+      //const info = await fetchInfo(codename, build.filename);
 
       return {
         ...build,
         size: humanSize(build.size), // info.size for getting the builds size from GH releases
         datetime: humanDate(build.datetime),
-        md5: build.id,
-        downloads: info.download_count, // info.download_count for tracking downloads from GH releases.
-        changelog,
+        sha256: build.id,
+        downloads: "",
+        // downloads: info.download_count, // info.download_count for tracking downloads from GH releases.
+        changelog: build.changelog_device,
+        spl: build.android_spl
       };
     })
 
@@ -54,13 +56,13 @@ const fetchBuilds = async (codename, romtype) => {
   }
 };
 
-const fetchChangelog = async (codename, romtype, version, number) => {
+const fetchChangelog = async (codename, build_type, version, version_code) => {
   try {
     const res = await request(`${baseURL}/ota/master/updates/${codename}_changelog`, true);
 
     for (let index = 0; index < res.changelogs.length; index += 1) {
       const element = res.changelogs[index];
-      if (element.romtype === romtype && element.version === version && element.number === number) {
+      if (element.build_type === build_type && element.version === version && element.version_code === version_code) {
         return element.text;
       }
     }
@@ -106,8 +108,8 @@ const fetchPostMD = async (postID) => {
   return res;
 };
 
-const generateDownloadURL = (filename, version, romtype, number, codename) => {
-  const downloadVersion = `${version.toLowerCase()}-${romtype.toLowerCase()}-${number.toLowerCase()}`;
+const generateDownloadURL = (filename, version, build_type, version_code, codename) => {
+  const downloadVersion = `${version.toLowerCase()}-${build_type.toLowerCase()}-${version_code.toLowerCase()}`;
   const downloadBase = `https://github.com/aospa-releases/${codename}/releases/download/${downloadVersion}/${filename}`;
   return `${downloadBase}`;
 };

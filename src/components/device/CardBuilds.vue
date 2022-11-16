@@ -5,8 +5,8 @@
         v-if="!$store.state.buildLoader"
         class="collapsible collapsible-builds"
       >
-        <template v-for="romtype in deviceBuilds">
-          <template v-for="build in romtype">
+        <template v-for="build_type in deviceBuilds">
+          <template v-for="build in build_type">
             <li
               v-if="build.filename"
               :key="build.id"
@@ -16,8 +16,8 @@
               <div class="collapsible-header white-text">
                 <i class="material-icons">system_update</i>
                 <span class="upper-bold" style="width: 100%"
-                  >{{ build.version }} {{ build.romtype }}
-                  {{ build.number }}</span
+                  >{{ build.version }} {{ build.build_type }}
+                  {{ build.version_code }}</span
                 >
                 <i class="material-icons">arrow_drop_down</i>
               </div>
@@ -34,8 +34,11 @@
                   <div class="deviceprop">
                     <p>Size: {{ build.size }}</p>
                   </div>
-                  <div class="deviceprop md5">
-                    <p v-on:click="copyMD5(build.md5)">MD5: {{ build.md5 }}</p>
+                  <div class="deviceprop">
+                    <p>Security Patch Level: {{ build.spl }}</p>
+                  </div>
+                  <div class="deviceprop sha256">
+                    <p v-on:click="copysha256(build.sha256)">SHA256: {{ build.sha256 }}</p>
                   </div>
                   <div v-if="build.downloads" class="deviceprop">
                     <p>Downloads: {{ build.downloads }}</p>
@@ -110,7 +113,7 @@
                  </div>
                 </div>
                   <!--               <a
-                v-on:click="download(build.filename, build.version, build.romtype, build.number, device.codename)"
+                v-on:click="download(build.filename, build.version, build.build_type, build.version_code, device.codename)"
                 download
                 target="_blank"
                 class="btn"
@@ -153,7 +156,7 @@ export default {
       const elems = document.querySelector(".collapsible-builds");
       const instances = M.Collapsible.init(elems);
 
-      const name = `${obj.version}-${obj.romtype}-${obj.number}`;
+      const name = `${obj.version}-${obj.build_type}-${obj.version_code}`;
 
       instances.options.onOpenEnd = () =>
         this.$router.push({
@@ -178,9 +181,9 @@ export default {
     getChangelog(build) {
       return build.changelog;
     },
-    copyMD5(md5) {
-      navigator.clipboard.writeText(md5);
-      this.showToast("md5 has been successfully copied");
+    copysha256(sha256) {
+      navigator.clipboard.writeText(sha256);
+      this.showToast("sha256 has been successfully copied");
     },
     showToast(message) {
       if (this.$toast != null) {
@@ -202,9 +205,9 @@ export default {
         toastClassName: "my-custom-toast-class",
       });
     },
-    /*     download(file, version, romtype, number, codename) {
+    /*     download(file, version, build_type, version_code, codename) {
       M.toast({ html: "Starting Download... Please Wait" });
-      location.href = generateDownloadURL(file, version, romtype, number, codename);
+      location.href = generateDownloadURL(file, version, build_type, version_code, codename);
     }, */
   },
   computed: {
