@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4ff14ad_e8f00c7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000012
+      },
+      "writtenOn": "2023-01-17T01:45:52Z",
+      "side": 1,
+      "message": "Andrew says we should include emojis instead to improve page loading speed.",
+      "revId": "cffc31c50adb8fc59e7f74ae3ac2c72478f47e88",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    }
+  ]
+}
