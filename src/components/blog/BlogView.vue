@@ -101,11 +101,11 @@ export default {
 }
 
 .md strong {
-  color: var(--text) !important;
+  color: var(--textHighlight) !important;
 }
 
 .md a {
-  color: var(--accent) !important;
+  color: var(--textHighlight) !important;
 }
 
 .posts > .collapsible-body {
