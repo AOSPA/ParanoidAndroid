@@ -97,7 +97,7 @@ export default {
 }
 
 .md li {
-  color: var(--text) !important;
+  color: var(--textHighlight) !important;
 }
 
 .md strong {
