@@ -2,7 +2,7 @@
 <div class="test">
   <div class="center fragment-root" >
     <h3 class="accent">
-      Topaz<sup>13</sup> Beta
+      Topaz<sup>13</sup>
     </h3>
     <h5 class="accent">
       by the <strong>paranoidandroid</strong> team
