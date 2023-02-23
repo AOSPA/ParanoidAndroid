@@ -13,7 +13,7 @@ export default {
         AM:
           "https://em-content.zobj.net/thumbs/120/twitter/322/flag-armenia_1f1e6-1f1f2.png",
         BD:
-          "https://em-content.zobj.net/thumbs/120/twitter/322/flag-bangladesh_1f1e7-1f1e9.png"
+          "https://em-content.zobj.net/thumbs/120/twitter/322/flag-bangladesh_1f1e7-1f1e9.png",
         BR:
           "https://em-content.zobj.net/thumbs/120/twitter/322/flag-brazil_1f1e7-1f1f7.png",
         CH:
