@@ -38,6 +38,8 @@ export default {
           "https://em-content.zobj.net/thumbs/120/twitter/322/flag-sri-lanka_1f1f1-1f1f0.png",
         MU:
           "https://em-content.zobj.net/thumbs/120/twitter/322/flag-mauritius_1f1f2-1f1fa.png",
+        PH:
+          "https://em-content.zobj.net/thumbs/240/twitter/322/flag-philippines_1f1f5-1f1ed.png",
         PK:
           "https://em-content.zobj.net/thumbs/120/twitter/322/flag-pakistan_1f1f5-1f1f0.png",
         PT:
