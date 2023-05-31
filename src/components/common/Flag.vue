@@ -12,6 +12,8 @@ export default {
           "https://em-content.zobj.net/thumbs/120/twitter/322/flag-albania_1f1e6-1f1f1.png",
         AM:
           "https://em-content.zobj.net/thumbs/120/twitter/322/flag-armenia_1f1e6-1f1f2.png",
+        AU:
+          "https://em-content.zobj.net/thumbs/120/twitter/322/flag-australia_1f1e6-1f1fa.png",
         BD:
           "https://em-content.zobj.net/thumbs/120/twitter/322/flag-bangladesh_1f1e7-1f1e9.png",
         BR:
