@@ -27,12 +27,16 @@ const fetchDevices = async () => {
   }
 };
 
-const fetchBuilds = async (codename, build_type) => {
+const fetchBuilds = async (codename) => {
   try {
     const res = await request(`${baseURL}/ota/master/updates/${codename}`, true);
 
-    const filteredArray = res.updates.filter(updates => updates.build_type === build_type);
-    filteredArray.sort((a, b) => parseFloat(b.datetime) - parseFloat(a.datetime));
+    const filteredArray = res.updates.sort((a, b) => {
+      if (a.version !== b.version) {
+        return b.version.localeCompare(a.version);
+      }
+      return parseFloat(b.datetime) - parseFloat(a.datetime);
+    });
 
     const promises = filteredArray.map(async (build) => {
       //const changelog = await fetchChangelog(codename, build.build_type, build.version, build.version_code) || "";
@@ -42,32 +46,19 @@ const fetchBuilds = async (codename, build_type) => {
         ...build,
         size: humanSize(build.size), // info.size for getting the builds size from GH releases
         datetime: humanDate(build.datetime),
-        sha256: build.id,
+        recovery_sha256: build.recovery_sha256,
+        fastboot_sha256: build.fastboot_sha256,
         downloads: "",
         // downloads: info.download_count, // info.download_count for tracking downloads from GH releases.
         changelog: build.changelog_device,
-        spl: build.android_spl
+        spl: build.android_spl,
+        inactive: build.inactive
       };
     })
 
     return await Promise.all(promises);
   } catch (e) {
     return [];
-  }
-};
-
-const fetchChangelog = async (codename, build_type, version, version_code) => {
-  try {
-    const res = await request(`${baseURL}/ota/master/updates/${codename}_changelog`, true);
-
-    for (let index = 0; index < res.changelogs.length; index += 1) {
-      const element = res.changelogs[index];
-      if (element.build_type === build_type && element.version === version && element.version_code === version_code) {
-        return element.text;
-      }
-    }
-  } catch (err) {
-    return null;
   }
 };
 
@@ -108,28 +99,6 @@ const fetchPostMD = async (postID) => {
   return res;
 };
 
-const generateDownloadURL = (filename, version, build_type, version_code, codename) => {
-  const downloadVersion = `${version.toLowerCase()}-${build_type.toLowerCase()}-${version_code.toLowerCase()}`;
-  const downloadBase = `https://github.com/aospa-releases/${codename}/releases/download/${downloadVersion}/${filename}`;
-  return `${downloadBase}`;
-};
-
-const fetchInfo = async (codename, filename) => {
-  const deviceReleases = await request(`https://api.github.com/repos/aospa-releases/${codename}/releases`, true);
-
-  for (let i = 0; i < deviceReleases.length; i += 1) {
-    const release = deviceReleases[i];
-    for (let j = 0; j < release.assets.length; j += 1) {
-      const build = release.assets[j];
-      if (build.name === filename) {
-        return build;
-      }
-    }
-  }
-
-  return 0;
-};
-
 export {
-  fetchDevices, fetchBuilds, fetchROMChangelog, fetchChangelogMD, fetchTeamInfo, fetchBlogPosts, fetchPostMD, generateDownloadURL, fetchInfo,
+  fetchDevices, fetchBuilds, fetchROMChangelog, fetchChangelogMD, fetchTeamInfo, fetchBlogPosts, fetchPostMD
 };
