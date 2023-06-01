@@ -125,6 +125,7 @@ img {
 
 .sidenav li > a {
   border-radius: 14px;
+  height: auto;
 }
 
 .card {
