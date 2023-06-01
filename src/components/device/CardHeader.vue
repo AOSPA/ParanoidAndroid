@@ -22,27 +22,22 @@
             <h6>{{ device.codename }}</h6>
           </div>
 
-          <div v-if="device.active">
-            <div class="deviceprop">
-              <i class="material-icons">person_outline</i>
-              <h6 class="link" v-on:click="openLink(device.maintainer_link)">
-                {{ device.maintainer_name }}
+          <div>
+            <div v-if="device.active">
+              <div v-for="maintainer in device.maintainers" :key="maintainer.name">
+              <div class="deviceprop">
+                <i class="material-icons">person_outline</i>
+              <h6 class="link" v-on:click="openLink(maintainer.link)">
+                {{ maintainer.name }}
               </h6>
-              <Flag width="20px" :country="device.maintainer_country" />
+              <Flag width="20px" :country="maintainer.country" />
+              </div>
             </div>
-
-            <div v-if="device.comaintainer_name" class="deviceprop">
-              <i class="material-icons">person_outline</i>
-              <h6 class="link" v-on:click="openLink(device.comaintainer_link)">
-                {{ device.comaintainer_name }}
-              </h6>
-              <Flag width="20px" :country="device.comaintainer_country" />
             </div>
-          </div>
-
-          <div v-if="!device.active" class="deviceprop">
-            <i class="material-icons red-icon">person_outline</i>
+            <div v-else>
+              <i class="material-icons red-icon">person_outline</i>
             <h6>No maintainer</h6>
+            </div>
           </div>
 
           <div
