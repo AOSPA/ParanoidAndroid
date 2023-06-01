@@ -524,7 +524,7 @@ span {
 } */
 
 .collapsible-builds li {
-  margin-top: 15px;
+  margin: 15px;
 }
 
 .buildChangelog pre {
