@@ -43,25 +43,16 @@ export const store = new Vuex.Store({
         commit("updateDeviceLoader", false);
       }
     },
-    async fetchBuilds({ commit, state }, props) {
+    async fetchBuilds({ commit }, props) {
       commit("updateBuildLoader", true);
-      commit("setBuilds", []);
+      commit("setBuilds", {});
 
-      console.log(`BUILD FETCH ${state.device.supported_types}`);
+      const builds = await fetchBuilds(props.codename);
 
-      if (state.device.supported_types === undefined) {
-        await fetchDevices();
-      }
-
-      const builds = {};
-
-      if (state.device.supported_types) {
-        await Promise.all(state.device.supported_types.map(async (type) => {
-          builds[type] = await fetchBuilds(props.codename, type);
-        }));
+      if (builds) {
         commit("setBuilds", builds);
+        commit("updateBuildLoader", false);
       }
-      commit("updateBuildLoader", false);
     },
     filterDevice({ commit, state }, props) {
       state.devices
@@ -71,10 +62,8 @@ export const store = new Vuex.Store({
     },
     getIndexOfExpandedBuild({ commit, state }, filename) {
       let list = [];
-      if (state.device.supported_types) {
-        list = Object.values(state.builds).flat();
-        commit("setExpandedBuild", list.findIndex(b => b.filename === filename));
-      }
+      list = Object.values(state.builds).flat();
+      commit("setExpandedBuild", list.findIndex(b => b.filename === filename));
     },
 
   },

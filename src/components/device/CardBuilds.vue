@@ -5,8 +5,9 @@
         v-if="!$store.state.buildLoader"
         class="collapsible collapsible-builds"
       >
-        <template v-for="build_type in deviceBuilds">
-          <template v-for="build in build_type">
+        <template v-for="(builds, version) in deviceBuilds">
+          <h5 style="padding: 18px">{{ version }}</h5>
+          <template v-for="build in builds">
             <li
               v-if="build.filename"
               :key="build.id"
@@ -16,8 +17,7 @@
               <div class="collapsible-header white-text">
                 <i class="material-icons">system_update</i>
                 <span class="upper-bold" style="width: 100%"
-                  >{{ build.version }} {{ build.build_type }}
-                  {{ build.version_code }}</span
+                  >{{ build.build_type }} {{ build.version_code }}</span
                 >
                 <i class="material-icons">arrow_drop_down</i>
               </div>
@@ -37,8 +37,15 @@
                   <div class="deviceprop">
                     <p>Security Patch Level: {{ build.spl }}</p>
                   </div>
-                  <div class="deviceprop sha256">
-                    <p v-on:click="copysha256(build.sha256)">SHA256: {{ build.sha256 }}</p>
+                  <div class="deviceprop sha256" v-if="build.recovery_sha256">
+                    <p v-on:click="copysha256(build.recovery_sha256)">
+                      Recovery SHA256: {{ build.recovery_sha256 }}
+                    </p>
+                  </div>
+                  <div class="deviceprop sha256" v-if="build.fastboot_sha256">
+                    <p v-on:click="copysha256(build.fastboot_sha256)">
+                      Fastboot SHA256: {{ build.fastboot_sha256 }}
+                    </p>
                   </div>
                   <div v-if="build.downloads" class="deviceprop">
                     <p>Downloads: {{ build.downloads }}</p>
@@ -50,81 +57,52 @@
                   <pre style="text-align: center"> {{ build.changelog }}</pre>
                 </div>
 
-                <div v-if="!build.switchLinks">
-                  <div class="buildButtons" style="text-align: center">
-                     <a v-if="build.url"
-                       v-on:click="download(build.url)"
-                       download
-                       target="_blank"
-                       class="btn buttonInsideCard"
-                       >Recovery option</a
-                     >
-                     <a v-if="build.fastboot"
-                       v-on:click="download(build.fastboot)"
-                       download
-                       target="_blank"
-                       class="btn buttonInsideCard"
-                       >Fastboot option</a
-                     >
-                 </div>
-                 <div class="buildButtons" style="text-align: center">
-                  <a v-if="build.telegram"
-                       v-on:click="download(build.telegram)"
-                       download
-                       target="_blank"
-                       class="btn buttonInsideCard"
-                       >Telegram</a
-                     >
-                     <a v-if="build.mirror"
-                       v-on:click="download(build.mirror)"
-                       download
-                       target="_blank"
-                       class="btn buttonInsideCard"
-                       >Mirror</a
-                     >
-                 </div>
+                <div class="buildButtons" style="text-align: center">
+                  <a
+                    v-if="build.url"
+                    v-on:click="download(build.url)"
+                    download
+                    target="_blank"
+                    class="btn buttonInsideCard"
+                    >Recovery option</a
+                  >
+                  <a
+                    v-if="build.fastboot"
+                    v-on:click="download(build.fastboot)"
+                    download
+                    target="_blank"
+                    class="btn buttonInsideCard"
+                    >Fastboot option</a
+                  >
                 </div>
-
-                <div v-if="build.switchLinks">
-                  <div class="buildButtons" style="text-align: center">
-                     <a v-if="build.mirror"
-                       v-on:click="download(build.mirror)"
-                       download
-                       target="_blank"
-                       class="btn buttonInsideCard"
-                       >Download</a
-                     >
-                 </div>
-                 <div class="buildButtons" style="text-align: center">
-                  <a v-if="build.telegram"
-                       v-on:click="download(build.telegram)"
-                       download
-                       target="_blank"
-                       class="btn buttonInsideCard"
-                       >Telegram</a
-                     >
-                     <a v-if="build.url"
-                       v-on:click="download(build.url)"
-                       download
-                       target="_blank"
-                       class="btn buttonInsideCard"
-                       >Mirror (only recovery)</a
-                     >
-                 </div>
+                <div
+                  class="buildButtons"
+                  style="text-align: center; margin-bottom: 8px"
+                >
+                  <a
+                    v-if="build.telegram"
+                    v-on:click="download(build.telegram)"
+                    download
+                    target="_blank"
+                    class="btn buttonInsideCard"
+                    >Telegram</a
+                  >
+                  <a
+                    v-if="build.mirror"
+                    v-on:click="download(build.mirror)"
+                    download
+                    target="_blank"
+                    class="btn buttonInsideCard"
+                    >Mirror</a
+                  >
                 </div>
-                  <!--               <a
-                v-on:click="download(build.filename, build.version, build.build_type, build.version_code, device.codename)"
-                download
-                target="_blank"
-                class="btn"
-              >Download</a> -->
               </div>
             </li>
           </template>
         </template>
       </ul>
       <Loading v-if="$store.state.buildLoader" />
-   </div>
+    </div>
   </div>
 </template>
 <script>
@@ -212,10 +190,16 @@ export default {
   },
   computed: {
     deviceBuilds() {
-      return this.$store.state.device.supported_types.map((type) => ({
-        ...this.$store.state.builds[type],
-        type,
-      }));
+      const deviceBuilds = {};
+      this.$store.state.builds.forEach((build) => {
+        const version =
+          build.version + " (" + "Android " + build.android_version + ")";
+        if (!deviceBuilds.hasOwnProperty(version)) {
+          deviceBuilds[version] = [];
+        }
+        deviceBuilds[version].push(build);
+      });
+      return deviceBuilds;
     },
     device() {
       return this.$store.state.device;
