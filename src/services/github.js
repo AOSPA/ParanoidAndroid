@@ -1,11 +1,11 @@
 import request from "../helpers/request";
 import { humanDate, humanSize } from "../helpers/utils";
 
-const baseURL = "https://raw.githubusercontent.com/AOSPA";
+const baseURL = "https://api.paranoidandroid.co";
 
 const fetchDevices = async () => {
   try {
-    const res = await request(`${baseURL}/ota/master/devices`, true);
+    const res = await request(`${baseURL}/devices`, true);
 
     const brands = [];
     const devices = [];
@@ -29,7 +29,7 @@ const fetchDevices = async () => {
 
 const fetchBuilds = async (codename) => {
   try {
-    const res = await request(`${baseURL}/ota/master/updates/${codename}`, true);
+    const res = await request(`${baseURL}/updates/${codename}`, true);
 
     const filteredArray = res.updates.sort((a, b) => {
       if (a.version !== b.version) {
@@ -63,7 +63,7 @@ const fetchBuilds = async (codename) => {
 };
 
 const fetchROMChangelog = async () => {
-  const res = await request(`${baseURL}/ota/master/changelog`, true);
+  const res = await request(`${baseURL}/changelog`, true);
 
   for (let index = 0; index < res.changelog.length; index += 1) {
     const element = res.changelog[index];
@@ -74,17 +74,17 @@ const fetchROMChangelog = async () => {
 };
 
 const fetchChangelogMD = async (changeID) => {
-  const res = await request(`${baseURL}/ota/master/changelogs/${changeID}.md`, false);
+  const res = await request(`${baseURL}/changelogs/${changeID}.md`, false);
   return res;
 };
 
 const fetchTeamInfo = async () => {
-  const res = await request(`${baseURL}/ota/master/team.md`, false);
+  const res = await request(`${baseURL}/team.md`, false);
   return res;
 };
 
 const fetchBlogPosts = async () => {
-  const res = await request(`${baseURL}/ota/master/blog`, true);
+  const res = await request(`${baseURL}/blog`, true);
 
   for (let index = 0; index < res.posts.length; index += 1) {
     const element = res.posts[index];
@@ -95,7 +95,7 @@ const fetchBlogPosts = async () => {
 };
 
 const fetchPostMD = async (postID) => {
-  const res = await request(`${baseURL}/ota/master/posts/${postID}.md`, false);
+  const res = await request(`${baseURL}/posts/${postID}.md`, false);
   return res;
 };
 
