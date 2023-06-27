@@ -77,4 +77,13 @@ export default {
    font-display: swap;
  }
 
+ @font-face {
+   font-family: "Nothing";
+   src: local("Nothing"),
+   url(./fonts/Nothing.ttf) format("truetype");
+   font-weight: medium;
+   font-style: medium;
+   font-display: swap;
+ }
+
 </style>
