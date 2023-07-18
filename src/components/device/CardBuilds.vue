@@ -11,6 +11,7 @@
             <li
               v-if="build.filename"
               :key="build.id"
+              :data-key="build.id"
               @click="setBuild(build)"
               class="zips"
             >
@@ -115,29 +116,32 @@ export default {
   },
   updated() {
     if (this.$route.params.id) {
-      this.$store.dispatch(
-        "getIndexOfExpandedBuild",
-        this.$route.params.id
-      );
-      document.title =
-        this.$route.params.id ||
-        `Download Paranoid Android for ${this.$route.params.codename}`;
+      const buildId = this.$route.params.id;
+      this.$store.dispatch("getIndexOfExpandedBuild", buildId);
+      document.title = `Download Paranoid Android for ${this.$route.params.codename}`;
     }
+
     setTimeout(() => {
       this.openBuild(this.$store.state.expandedBuild);
       this.$store.dispatch("getIndexOfExpandedBuild", "");
     }, 1000);
   },
+
   methods: {
     setBuild(obj) {
       const elems = document.querySelector(".collapsible-builds");
       const instances = M.Collapsible.init(elems);
 
-      instances.options.onOpenEnd = () =>
+      instances.options.onOpenEnd = () => {
         this.$router.push({
           name: "id",
           params: { id: `${obj.id}` },
         });
+
+        this.$nextTick(() => {
+          this.scrollIntoCard(`${obj.id}`);
+        });
+      };
 
       instances.options.onCloseEnd = () =>
         this.$router.replace({ name: "id", params: { id: null } });
@@ -146,7 +150,26 @@ export default {
       if (!isNaN(index) && index !== -1) {
         const elems = document.querySelector(".collapsible-builds");
         const instances = M.Collapsible.init(elems);
+
         instances.open(index);
+
+        instances.options.onOpenEnd = () => {
+          this.$nextTick(() => {
+            const build = this.$store.state.builds[index];
+            if (build) {
+              this.scrollIntoCard(build.id);
+            }
+          });
+        };
+      }
+    },
+    scrollIntoCard(buildID) {
+      const card = document.querySelector(`li[data-key="${buildID}"]`);
+      if (card) {
+        const cardHeight = card.offsetHeight;
+        const windowHeight = window.innerHeight;
+        const scrollTo = card.offsetTop - (windowHeight / 2 - cardHeight / 2);
+        window.scrollTo({ top: scrollTo, behavior: "smooth" });
       }
     },
     download(download) {
