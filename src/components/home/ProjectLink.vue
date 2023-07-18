@@ -74,7 +74,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style>
 svg {
   fill-rule: evenodd;
   clip-rule: evenodd;
