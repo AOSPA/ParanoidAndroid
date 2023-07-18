@@ -107,7 +107,6 @@
 </template>
 <script>
 import Loading from "../common/Loading.vue";
-import { generateDownloadURL } from "../../services/github.js";
 
 export default {
   name: "CardBuilds",
@@ -115,13 +114,13 @@ export default {
     Loading,
   },
   updated() {
-    if (this.$route.params.filename) {
+    if (this.$route.params.id) {
       this.$store.dispatch(
         "getIndexOfExpandedBuild",
-        this.$route.params.filename
+        this.$route.params.id
       );
       document.title =
-        this.$route.params.filename ||
+        this.$route.params.id ||
         `Download Paranoid Android for ${this.$route.params.codename}`;
     }
     setTimeout(() => {
@@ -134,16 +133,14 @@ export default {
       const elems = document.querySelector(".collapsible-builds");
       const instances = M.Collapsible.init(elems);
 
-      const name = `${obj.version}-${obj.build_type}-${obj.version_code}`;
-
       instances.options.onOpenEnd = () =>
         this.$router.push({
-          name: "filename",
-          params: { filename: name.toLowerCase() },
+          name: "id",
+          params: { id: `${obj.id}` },
         });
 
       instances.options.onCloseEnd = () =>
-        this.$router.replace({ name: "filename", params: { filename: null } });
+        this.$router.replace({ name: "id", params: { id: null } });
     },
     openBuild(index) {
       if (!isNaN(index) && index !== -1) {

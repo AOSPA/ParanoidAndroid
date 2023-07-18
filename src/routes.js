@@ -24,7 +24,7 @@ export const routes = [
     component: Device,
     name: "device",
     children: [
-      { path: ":filename?", name: "filename" },
+      { path: ":id?", name: "id" },
     ],
   },
 ];
