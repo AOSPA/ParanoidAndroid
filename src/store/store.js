@@ -65,7 +65,6 @@ export const store = new Vuex.Store({
       list = Object.values(state.builds).flat();
       commit("setExpandedBuild", list.findIndex(b => b.id === id));
     },
-
   },
 });
 
