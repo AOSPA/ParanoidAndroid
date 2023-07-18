@@ -60,10 +60,10 @@ export const store = new Vuex.Store({
           .filter(devices => devices.codename === props.codename)
           .map(device => commit("setDevice", device)));
     },
-    getIndexOfExpandedBuild({ commit, state }, filename) {
+    getIndexOfExpandedBuild({ commit, state }, id) {
       let list = [];
       list = Object.values(state.builds).flat();
-      commit("setExpandedBuild", list.findIndex(b => b.filename === filename));
+      commit("setExpandedBuild", list.findIndex(b => b.id === id));
     },
 
   },
