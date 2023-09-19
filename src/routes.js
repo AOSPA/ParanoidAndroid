@@ -3,12 +3,14 @@ import Device from "./views/Device.vue";
 import Changelog from "./views/Changelog.vue";
 import Team from "./views/Team.vue";
 import Blog from "./views/Blog.vue";
+import Wallpapers from "./views/Wallpapers.vue"
 
 export const routes = [
   { path: "/", redirect: { name: 'home' } },
   { path: "/", component: Home, name: "home" },
   { path: "/changelog", component: Changelog, name: "changelog" },
   { path: "/team", component: Team, name: "team" },
+  { path: "/wallpapers", component: Wallpapers, name: "wallpapers"},
   {
     path: "/blog",
     component: Blog,

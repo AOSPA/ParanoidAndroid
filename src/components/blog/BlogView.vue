@@ -36,13 +36,14 @@
 </template>
 <script>
 import VueMarkdown from "@theori/vue-markdown";
-
+import Loading from "../common/Loading.vue";
 import { fetchBlogPosts } from "../../services/github";
 
 export default {
   name: "BlogView",
   components: {
     VueMarkdown,
+    Loading
   },
   data() {
     return {
@@ -82,7 +83,7 @@ export default {
    }, 
 };
 </script>
-<style>
+<style scoped>
 .md {
   color: var(--text) !important;
 }

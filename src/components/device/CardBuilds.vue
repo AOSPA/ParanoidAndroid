@@ -24,7 +24,7 @@
               </div>
 
               <div class="collapsible-body buildBackground">
-                <p class="label description">Details</p>
+                <p class="label">Details</p>
                 <div class="buildinfo">
                   <div class="deviceprop">
                     <p>Filename: {{ build.filename }}</p>
