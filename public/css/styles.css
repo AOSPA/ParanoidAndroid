@@ -810,3 +810,9 @@ a.sources:not(:hover) {
 strong {
   font-weight: bold !important;
 }
+
+.download-wallpaper {
+  background-color: var(--downloadWallpaperBackground);
+  color: var(--downloadWallpaperColor);
+  border: var(--downloadWallpaperBorder);
+}

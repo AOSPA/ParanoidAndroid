@@ -16,6 +16,14 @@
         >Blog</a
       >
       </router-link>
+      <router-link :to="{ name: 'wallpapers' }">
+      <a
+        target="_blank"
+        @click="hidebar"
+        class="btn"
+        >Wallpapers</a
+      >
+      </router-link>
     </div>
     <div class="home-bottom-info">
       <div class="home-bottom-info-content">

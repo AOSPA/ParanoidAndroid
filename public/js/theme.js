@@ -9,35 +9,40 @@ window.onload = function () {
 function applyTheme() {
   const useDark = window.matchMedia("(prefers-color-scheme: dark)");
 
+  const downloadButton = document.querySelector('.download-button');
+
   function toggleDarkMode(state) {
 
     if (state) {
       localStorage.setItem("theme", "dark");
-      localStorage.setItem("banner", "logo_d.svg");
-      localStorage.setItem("logo", "logo_dark.webp");
-      setCssVar("--accent", "#fedcda");
-      setCssVar("--background", "#201a1a");
-      setCssVar("--container", "rgb(255, 218, 217)");
-      setCssVar("--buttonHighlight", "#372f2d")
+      localStorage.setItem("banner", "logo_dark.svg");
+      localStorage.setItem("logo", "logo_dark.svg");
+      setCssVar("--accent", "#71dba7");
+      setCssVar("--background", "#191c1a");
+      setCssVar("--container", "#7f9687");
+      setCssVar("--buttonHighlight", "#24342a")
       setCssVar("--searchColor", "#000000");
-      setCssVar("--card", "#372f2d");
-      setCssVar("--text", "#faf0ef");
+      setCssVar("--card", "#24342a");
+      setCssVar("--text", "#ffffff");
       setCssVar("--textHighlight", "#1a1b1b");
       setCssVar("--secondaryTextColor", "#272630");
       setCssVar("--selectedItemDescription", "#E6E1E5");
       setCssVar("--buttonBackground", "#1C1B1F");
       setCssVar("--buttonText", "#E6E1E5");
       setCssVar("--highlightSelection", "rgba(255,255,255, 0.05)");
+      setCssVar("--downloadWallpaperBackground", "rgba(0, 0, 0, 0.7)")
+      setCssVar("--downloadWallpaperBackgroundHover", "rgba(0, 0, 0, 0.9)")
+      setCssVar("--downloadWallpaperColor", "white")
     } else {
       localStorage.setItem("theme", "white");
-      localStorage.setItem("banner", "logo.svg");
-      localStorage.setItem("logo", "logo_light.webp");
-      setCssVar("--accent", "#904a48");
-      setCssVar("--background", "#fceeed");
-      setCssVar("--container", "#904a48");
-      setCssVar("--buttonHighlight", "#eae2df")
-      setCssVar("--searchColor", "#fffbfd");
-      setCssVar("--card", "#fff8f6");
+      localStorage.setItem("banner", "logo_light.svg");
+      localStorage.setItem("logo", "logo_light.svg");
+      setCssVar("--accent", "#006c48");
+      setCssVar("--background", "#fbfdf8");
+      setCssVar("--container", "#24342a");
+      setCssVar("--buttonHighlight", "#afc7b7")
+      setCssVar("--searchColor", "#afc7b7");
+      setCssVar("--card", "#afc7b7");
       setCssVar("--text", "#494550");
       setCssVar("--textHighlight", "#ffffff");
       setCssVar("--secondaryTextColor", "#79737e");
@@ -45,6 +50,9 @@ function applyTheme() {
       setCssVar("--buttonBackground", "#fdfbff");
       setCssVar("--buttonText", "gray");
       setCssVar("--highlightSelection", "rgba(0,0,0, 0.05)")
+      setCssVar("--downloadWallpaperBackground", "rgba(255, 255, 255, 0.7)")
+      setCssVar("--downloadWallpaperBackgroundHover", "rgba(255, 255, 255, 0.9)")
+      setCssVar("--downloadWallpaperColor", "grey")
     }
 
     window.dispatchEvent(new CustomEvent("theme-key-localstorage-changed", {
