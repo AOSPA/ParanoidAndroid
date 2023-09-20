@@ -26,7 +26,7 @@
       </router-link>
 
       <Search />
-      <Loading v-if="$store.state.deviceLoader" />
+      <Loading v-if="$store.state.device.deviceLoader" />
       <ul class="collapsible collapsible-accordion">
         <li v-for="brand in brands" :key="brand.name">
           <div
@@ -86,7 +86,7 @@ export default {
       return configs.APP_NAME;
     },
     brands() {
-      return this.$store.state.devices;
+      return this.$store.state.device.devices;
     },
   },
   methods: {

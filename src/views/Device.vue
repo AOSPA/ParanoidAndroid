@@ -18,16 +18,16 @@ export default {
     CardBuilds,
   },
   created() {
-    this.$store.dispatch("fetchBuilds", this.$route.params);
+    this.$store.dispatch("device/fetchBuilds", this.$route.params);
   },
   mounted() {
-    // console.log(this.$store.state.device);
+    // console.log(this.$store.state.device.state.device);
   },
   watch: {
     "$route.params.codename": {
       handler(params) {
-        this.$store.dispatch("filterDevice", { codename: params });
-        this.$store.dispatch("fetchBuilds", { codename: params });
+        this.$store.dispatch("device/filterDevice", { codename: params });
+        this.$store.dispatch("device/fetchBuilds", { codename: params });
       },
     },
   },

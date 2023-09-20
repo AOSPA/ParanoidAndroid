@@ -86,6 +86,8 @@ const fetchTeamInfo = async () => {
 const fetchBlogPosts = async () => {
   const res = await request(`${baseURL}/blog`, true);
 
+  const posts = []
+
   for (let index = 0; index < res.posts.length; index += 1) {
     const element = res.posts[index];
     element.md = await fetchPostMD(element.id);

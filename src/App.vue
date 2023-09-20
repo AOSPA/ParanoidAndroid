@@ -21,10 +21,13 @@ import "../public/css/styles.css";
 import Navbar from "./components/Navbar.vue";
 import Sidebar from "./components/Sidebar.vue";
 
+import { mapActions } from 'vuex'
+
 export default {
-  name: "app",
+  name: "App",
   created() {
-    this.$store.dispatch("fetchDevices");
+    this.$store.dispatch("device/fetchDevices");
+    this.$store.dispatch("blog/fetchBlogPosts");
   },
   mounted() {
     M.AutoInit();
