@@ -80,6 +80,11 @@ export default {
       ],
     };
   },
+  methods: {
+    hidebar() {
+      console.log("hidebar method called");
+    }
+  }
 };
 </script>
 <style>
