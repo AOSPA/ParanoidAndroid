@@ -2,7 +2,7 @@
   <div class="row center">
     <div class="col s12 m12">
       <ul
-        v-if="!$store.state.buildLoader"
+        v-if="!$store.state.device.buildLoader"
         class="collapsible collapsible-builds"
       >
         <template v-for="(builds, version) in deviceBuilds">
@@ -102,7 +102,7 @@
           </template>
         </template>
       </ul>
-      <Loading v-if="$store.state.buildLoader" />
+      <Loading v-if="$store.state.device.buildLoader" />
     </div>
   </div>
 </template>
@@ -117,13 +117,13 @@ export default {
   updated() {
     if (this.$route.params.id) {
       const buildId = this.$route.params.id;
-      this.$store.dispatch("getIndexOfExpandedBuild", buildId);
+      this.$store.dispatch("device/getIndexOfExpandedBuild", buildId);
       document.title = `Download Paranoid Android for ${this.$route.params.codename}`;
     }
 
     setTimeout(() => {
-      this.openBuild(this.$store.state.expandedBuild);
-      this.$store.dispatch("getIndexOfExpandedBuild", "");
+      this.openBuild(this.$store.state.device.expandedBuild);
+      this.$store.dispatch("device/getIndexOfExpandedBuild", "");
     }, 1000);
   },
   methods: {
@@ -153,7 +153,7 @@ export default {
 
         instances.options.onOpenEnd = () => {
           this.$nextTick(() => {
-            const build = this.$store.state.builds[index];
+            const build = this.$store.state.device.builds[index];
             if (build) {
               this.scrollIntoCard(build.id);
             }
@@ -209,7 +209,7 @@ export default {
   computed: {
     deviceBuilds() {
       const deviceBuilds = {};
-      this.$store.state.builds.forEach((build) => {
+      this.$store.state.device.builds.forEach((build) => {
         const version =
           build.version + " (" + "Android " + build.android_version + ")";
         if (!deviceBuilds.hasOwnProperty(version)) {
@@ -220,10 +220,10 @@ export default {
       return deviceBuilds;
     },
     device() {
-      return this.$store.state.device;
+      return this.$store.state.device.device;
     },
     types() {
-      return this.$store.state.device.supported_types;
+      return this.$store.state.device.device.supported_types;
     },
   },
 };

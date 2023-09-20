@@ -9,8 +9,6 @@ window.onload = function () {
 function applyTheme() {
   const useDark = window.matchMedia("(prefers-color-scheme: dark)");
 
-  const downloadButton = document.querySelector('.download-button');
-
   function toggleDarkMode(state) {
 
     if (state) {
