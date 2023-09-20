@@ -93,8 +93,8 @@ export default {
   },
   computed: {
     device() {
-      this.$store.dispatch("filterDevice", this.$route.params);
-      const { device } = this.$store.state;
+      this.$store.dispatch("device/filterDevice", this.$route.params);
+      const { device } = this.$store.state.device;
 
       if (device && device.name) {
         document.title = `${device.name} (${this.$route.params.codename}) | Paranoid Android Download Center`;
@@ -131,6 +131,7 @@ export default {
   },
 };
 </script>
+
 <style>
 @media only screen and (max-width: 600px) {
   .Vue-Toastification__toast--default {
