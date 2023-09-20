@@ -4,7 +4,7 @@ import Toast from "vue-toastification";
 import App from "./App.vue";
 import "vue-toastification/dist/index.css";
 
-import { store } from "./store/store";
+import { rootStore } from "./store/rootStore";
 
 import { routes } from "./routes";
 
@@ -31,5 +31,5 @@ Vue.use(Toast, {
 new Vue({
   render: h => h(App),
   router,
-  store,
+  store: rootStore
 }).$mount("#app");
