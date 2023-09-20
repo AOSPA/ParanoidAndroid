@@ -5,7 +5,8 @@ import { fetchDevices, fetchBuilds } from "../services/github";
 
 Vue.use(Vuex);
 
-export const store = new Vuex.Store({
+export const deviceStore = {
+  namespaced: true,
   state: {
     devices: [],
     builds: {},
@@ -67,6 +68,4 @@ export const store = new Vuex.Store({
     },
 
   },
-});
-
-export default store;
+}

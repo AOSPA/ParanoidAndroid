@@ -51,7 +51,7 @@ export default {
   },
   computed: {
     filteredList() {
-      return this.$store.state.devices.flatMap(brands => brands.devices.filter((d) => {
+      return this.$store.state.device.devices.flatMap(brands => brands.devices.filter((d) => {
         const resByCodename = d.codename
           .toLowerCase()
           .includes(this.search.toLowerCase());
