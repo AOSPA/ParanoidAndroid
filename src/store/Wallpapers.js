@@ -1,5 +1,14 @@
 const WALLPAPERS = [
   {
+    version: "Uvite",
+    wallpapers: [
+      {
+        name: "Uvite Alpha",
+        imageUrl: "uvite_alpha.jpg"
+      }
+    ]
+  },
+  {
     version: "Topaz",
     wallpapers: [
       {
